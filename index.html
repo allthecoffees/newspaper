@@ -52,12 +52,13 @@
   .topline { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
     border-bottom: 1px solid var(--rule); }
-  .masthead { text-align: center; padding: 18px 0 10px; border-bottom: 4px double var(--rule); }
-  .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(44px, 10vw, 96px);
+  .sticky-head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  .masthead { text-align: center; padding: 12px 0 6px; border-bottom: 4px double var(--rule); }
+  .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(34px, 7vw, 64px);
     line-height: 1.05; margin: 0; letter-spacing: 0; }
   .tagline { font-style: italic; color: var(--muted); margin: 8px 0 0; }
   .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; font-family: var(--sans);
-    font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+    font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 8px 0; border-bottom: 1px solid var(--rule); }
   .nav-btn { font: inherit; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; background: none;
     border: 1px solid var(--rule); color: var(--ink); padding: 4px 12px; cursor: pointer; text-decoration: none;
     display: inline-block; }
@@ -126,6 +127,7 @@
     <span id="updated"></span>
   </div>
 
+  <div class="sticky-head">
   <header class="masthead">
     <h1 id="title">Strange and Unusual</h1>
     <p class="tagline" id="tagline"></p>
@@ -139,6 +141,7 @@
     <a class="nav-btn" href="#sources">Sources</a>
     <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
   </nav>
+  </div>
 
   <div class="editions" id="editionFilters" role="group" aria-label="Choose an edition"></div>
 
