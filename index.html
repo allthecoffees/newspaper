@@ -200,10 +200,15 @@
   document.getElementById("bookGrid").innerHTML = genres.map(function (g) {
     var list = books.filter(function (b) { return b.genre === g.key && (b.date || "") >= today.slice(0, b.date.length); });
     var items = list.length ? list.map(function (b) {
+      var linkLabel = { publisher: "Publisher page", retailer: "Retailer page", listing: "Listing page" }[b.linkType] || "Book page";
+      var titleHtml = b.url
+        ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
+        : esc(b.title);
       return '<article class="book">' +
         '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
         (b.series ? '<div class="series">' + esc(b.series) + '</div>' : '') +
-        '<h4 class="title">' + esc(b.title) + '</h4>' +
+        '<h4 class="title">' + titleHtml + '</h4>' +
+        (b.url ? '<div class="pub"><a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(linkLabel) + ' →</a></div>' : '') +
         (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
         (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') +
         (b.publisher ? '<div class="pub">' + esc(b.publisher) + '</div>' : '') +
@@ -220,7 +225,9 @@
     { key: "coffee", label: "Coffee" },
     { key: "boardgames", label: "Board games" },
     { key: "quilting", label: "Quilting" },
-    { key: "cooking", label: "Cooking" }
+    { key: "cooking", label: "Cooking" },
+    { key: "festivals", label: "Festivals & markets" },
+    { key: "parks", label: "Parks" }
   ];
   var catLabel = {};
   categories.forEach(function (c) { catLabel[c.key] = c.label; });
@@ -245,7 +252,7 @@
       '<span class="tag">' + esc(ev.type === "class" ? "Class" : "Event") + '</span></div>';
   }
   function titleOf(ev) {
-    return ev.url ? '<a href="' + esc(ev.url) + '">' + esc(ev.title) + '</a>' : esc(ev.title);
+    return ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">' + esc(ev.title) + '</a>' : esc(ev.title);
   }
 
   function renderEvents() {
