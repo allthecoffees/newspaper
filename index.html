@@ -135,6 +135,7 @@
     <a class="nav-btn" href="#books">Book releases</a>
     <a class="nav-btn" href="#screen">On screen</a>
     <a class="nav-btn" href="#events">Local events</a>
+    <a class="nav-btn" href="#articles">Around the web</a>
     <a class="nav-btn" href="#sources">Sources</a>
     <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
   </nav>
@@ -167,6 +168,15 @@
     </div>
     <div class="filters" id="filters" role="group" aria-label="Filter events by category"></div>
     <div id="eventList"></div>
+  </section>
+
+  <section id="articles">
+    <div class="section-head">
+      <h2>Around the Web</h2>
+      <span class="kicker">Nautilus · Smithsonian · Hyperallergic · Daily Coffee News</span>
+    </div>
+    <p class="dek">Recent stories on books, art, coffee and games.</p>
+    <div class="events" id="articleList"></div>
   </section>
 
   <section id="sources">
@@ -218,9 +228,9 @@
 
   // Editions: the current week plus any archived past weeks, newest first.
   var current = { weekOf: D.weekOf || D.lastUpdated || "", isCurrent: true,
-    books: D.books, screen: D.screen, events: D.events, recurring: D.recurring };
+    books: D.books, screen: D.screen, events: D.events, recurring: D.recurring, articles: D.articles };
   var past = (D.archive || []).slice().sort(function (a, b) { return a.weekOf < b.weekOf ? 1 : -1; })
-    .map(function (e) { return { weekOf: e.weekOf, isCurrent: false, books: e.books, screen: e.screen, events: e.events, recurring: e.recurring }; });
+    .map(function (e) { return { weekOf: e.weekOf, isCurrent: false, books: e.books, screen: e.screen, events: e.events, recurring: e.recurring, articles: e.articles }; });
   var editions = [current].concat(past);
   var selected = 0;
   var editionsEl = document.getElementById("editionFilters");
@@ -316,6 +326,18 @@
     }).join("") : '<div class="empty"><p>Nothing listed for this week.</p></div>';
   }
 
+  // Around the web: shown as published, newest first
+  function renderArticles() {
+    var items = (editions[selected].articles || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
+    document.getElementById("articleList").innerHTML = items.length ? items.map(function (a) {
+      return '<article class="event">' +
+        '<div class="when">' + esc(a.source) + ' · ' + esc(fmtDate(a.date)) + '</div>' +
+        '<h3><a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a></h3>' +
+        (a.summary ? '<p class="note" style="margin:6px 0 0">' + esc(a.summary) + '</p>' : '') +
+        '</article>';
+    }).join("") : '<div class="empty"><p>No articles listed for this edition.</p></div>';
+  }
+
   // Events
   var categories = [
     { key: "all", label: "All" },
@@ -397,6 +419,7 @@
     renderBookFilters();
     renderBooks();
     renderScreen();
+    renderArticles();
     renderEvents();
   }
   renderAll();

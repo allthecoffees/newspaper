@@ -232,6 +232,26 @@ window.NEWSPAPER = {
       note: "About 20 miles north of Columbus. Listed for ages 55 and up." }
   ],
 
+  // Around the web: recent articles on the topics above.
+  articles: [
+    { title: "Forgotten Coding Queens, Telephones Untangled, and a Poisonous Quest: 8 Books We're Excited to Read This November",
+      source: "Nautilus", date: "2026-10-28", topic: "books",
+      summary: "A monthly reading list that includes a new biography of Niels Bohr.",
+      url: "https://nautil.us/forgotten-coding-queens-telephones-untangled-and-a-poisonous-quest-8-books-were-excited-to-read-this-november-1286136/" },
+    { title: "November 2026 issue, including \u201cThe Skywatchers\u201d", source: "Smithsonian", date: "2026-11-01", topic: "arts",
+      summary: "Features include \u201cThe Skywatchers,\u201d on how astronomers and art historians study classic paintings and literature.",
+      url: "https://www.smithsonianmag.com/issue/smithsonian/november-2026/" },
+    { title: "Hyperallergic weekly newsletter, Special Edition", source: "Hyperallergic", date: "2026-11-14", topic: "arts",
+      summary: "Previews Fall 2026 art and architecture books from Yale University Press.",
+      url: "https://hyperallergic.com/11-14-26-weekly-newsletter-2/" },
+    { title: "Weekly coffee news: Costa Rica harvest concerns and restoring an iconic coffee sign", source: "Daily Coffee News", date: "2026-11-06", topic: "coffee",
+      summary: "El Ni\u00f1o and lower harvest estimates in Costa Rica, plus a new report on coffee machines.",
+      url: "https://dailycoffeenews.com/2026/11/06/weekly-coffee-news-costa-rica-harvest-concerns-restoring-iconic-coffee-sign/" },
+    { title: "Weekly coffee news: a new coffee education certificate and an ICO price that edged down", source: "Daily Coffee News", date: "2026-11-13", topic: "coffee",
+      summary: "The weekly roundup includes a new coffee education certificate.",
+      url: "https://dailycoffeenews.com/2026/11/13/weekly-coffee-news-new-coffee-education-certificate-ico-price-edges-down/" }
+  ],
+
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
   archive: [],
 
