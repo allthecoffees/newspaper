@@ -20,8 +20,8 @@
  * organizer before you go.
  */
 window.NEWSPAPER = {
-  title: "The Daily Shelf",
-  tagline: "New books and local happenings for readers, makers and coffee drinkers",
+  title: "Strange and Unusual",
+  tagline: "Books, Screens & Local Oddities",
   city: "Columbus, Ohio",  // set to the city you want local events for, e.g. "Portland, OR"
   lastUpdated: "2026-11-25",
 

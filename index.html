@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Daily Shelf</title>
+<title>Strange and Unusual</title>
 <meta name="description" content="Upcoming sci-fi, fantasy and horror releases, plus local events for readers, makers and coffee drinkers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Franklin:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Franklin:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
   :root {
     --paper: #f7f3ea;
@@ -18,6 +18,7 @@
     --card: #fffdf8;
     --tag-bg: #ece5d4;
     --serif-head: "Playfair Display", Georgia, serif;
+    --gothic: "UnifrakturMaguntia", "Old English Text MT", Georgia, serif;
     --sans: "Libre Franklin", Arial, sans-serif;
     --body: "Source Serif 4", Georgia, serif;
   }
@@ -52,8 +53,8 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
     border-bottom: 1px solid var(--rule); }
   .masthead { text-align: center; padding: 18px 0 10px; border-bottom: 4px double var(--rule); }
-  .masthead h1 { font-family: var(--serif-head); font-weight: 900; font-size: clamp(40px, 9vw, 84px);
-    line-height: 1; margin: 0; letter-spacing: -.01em; }
+  .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(44px, 10vw, 96px);
+    line-height: 1.05; margin: 0; letter-spacing: 0; }
   .tagline { font-style: italic; color: var(--muted); margin: 8px 0 0; }
   .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-family: var(--sans);
     font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 10px 0; border-bottom: 1px solid var(--rule); }
@@ -119,7 +120,7 @@
   </div>
 
   <header class="masthead">
-    <h1 id="title">The Daily Shelf</h1>
+    <h1 id="title">Strange and Unusual</h1>
     <p class="tagline" id="tagline"></p>
   </header>
 
@@ -169,7 +170,7 @@
   </section>
 
   <footer>
-    <p>The Daily Shelf · a static page, no tracking.</p>
+    <p>Strange and Unusual · a static page, no tracking.</p>
   </footer>
 </div>
 
@@ -199,9 +200,9 @@
   document.getElementById("dateline").textContent =
     now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
   document.getElementById("updated").textContent = D.lastUpdated ? "Data updated " + fmtDate(D.lastUpdated) : "";
-  document.getElementById("title").textContent = D.title || "The Daily Shelf";
+  document.getElementById("title").textContent = D.title || "Strange and Unusual";
   document.getElementById("tagline").textContent = D.tagline || "";
-  document.title = (D.title || "The Daily Shelf");
+  document.title = (D.title || "Strange and Unusual");
 
   // Books: an "On your topics" block first, then one column per genre
   var genres = [
