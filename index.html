@@ -139,7 +139,7 @@
     <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
   </nav>
 
-  <div class="editions" id="editionFilters" role="group" aria-label="Choose a weekly edition"></div>
+  <div class="editions" id="editionFilters" role="group" aria-label="Choose an edition"></div>
 
   <section id="books">
     <div class="section-head">
@@ -226,12 +226,12 @@
   var editionsEl = document.getElementById("editionFilters");
 
   function editionLabel(e, i) {
-    return i === 0 ? "This week" : "Week of " + fmtDate(e.weekOf);
+    return i === 0 ? "Current edition" : "Edition of " + fmtDate(e.weekOf);
   }
   function renderEditionFilters() {
     if (editions.length < 2) { editionsEl.hidden = true; return; }
     editionsEl.hidden = false;
-    editionsEl.innerHTML = '<span class="label">Week</span>' + editions.map(function (e, i) {
+    editionsEl.innerHTML = '<span class="label">Editions</span>' + editions.map(function (e, i) {
       return '<button type="button" data-edition="' + i + '" aria-pressed="' + (i === selected) + '">' + esc(editionLabel(e, i)) + '</button>';
     }).join("");
   }
