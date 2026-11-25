@@ -249,7 +249,19 @@ window.NEWSPAPER = {
       url: "https://dailycoffeenews.com/2026/11/06/weekly-coffee-news-costa-rica-harvest-concerns-restoring-iconic-coffee-sign/" },
     { title: "Weekly coffee news: a new coffee education certificate and an ICO price that edged down", source: "Daily Coffee News", date: "2026-11-13", topic: "coffee",
       summary: "The weekly roundup includes a new coffee education certificate.",
-      url: "https://dailycoffeenews.com/2026/11/13/weekly-coffee-news-new-coffee-education-certificate-ico-price-edges-down/" }
+      url: "https://dailycoffeenews.com/2026/11/13/weekly-coffee-news-new-coffee-education-certificate-ico-price-edges-down/" },
+    { title: "Welcome to the mixed-up, joyful world of AuDHD", source: "Aeon", date: "2026-11-05", topic: "",
+      summary: "An essay on living with both autism and ADHD.",
+      url: "https://aeon.co/essays/welcome-to-the-mixed-up-joyful-world-of-audhd" },
+    { title: "Why astrophysics needs to abandon the \u2018Big Questions\u2019", source: "Aeon", date: "2026-11-06", topic: "",
+      summary: "Physicist Pedro G. Ferreira argues that physics tells us little about the deepest questions about the universe.",
+      url: "https://aeon.co/essays/why-astrophysics-needs-to-abandon-the-big-questions" },
+    { title: "A new answer to why there is something rather than nothing", source: "Aeon", date: "2026-11-12", topic: "",
+      summary: "A new take on an old philosophical question.",
+      url: "https://aeon.co/essays/a-new-answer-to-why-there-is-something-rather-than-nothing" },
+    { title: "Those forced to cross borders are imagining a radical new world", source: "Aeon", date: "2026-11-13", topic: "",
+      summary: "On how people crossing borders imagine the future, and what that says about freedom.",
+      url: "https://aeon.co/essays/those-forced-to-cross-borders-are-imagining-a-radical-new-world" },
   ],
 
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
