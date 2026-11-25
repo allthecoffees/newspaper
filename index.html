@@ -72,8 +72,11 @@
 
   /* Book columns */
   .genre-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
-  @media (min-width: 800px) { .genre-grid { grid-template-columns: repeat(3, 1fr); }
-    .genre-grid > div + div { border-left: 1px solid var(--rule); padding-left: 20px; } }
+  @media (min-width: 640px) { .genre-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
+  .topic-block { margin-bottom: 26px; padding-top: 14px; border-top: 3px solid var(--accent); }
+  .topic-block h3 { font-family: var(--serif-head); font-size: 22px; margin: 0 0 10px; }
+  .topic-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+  @media (min-width: 640px) { .topic-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
   .genre-grid h3 { font-family: var(--serif-head); font-size: 22px; margin: 0 0 10px; }
   .book { padding: 12px 0; border-bottom: 1px dotted var(--muted); }
   .book:last-child { border-bottom: 0; }
@@ -189,31 +192,45 @@
   document.getElementById("tagline").textContent = D.tagline || "";
   document.title = (D.title || "The Daily Shelf");
 
-  // Books: three genre columns
+  // Books: an "On your topics" block first, then one column per genre
   var genres = [
+    { key: "nonfiction", label: "Nonfiction" },
+    { key: "technology", label: "Technology" },
+    { key: "film", label: "Film" },
+    { key: "historical", label: "Historical" },
     { key: "scifi", label: "Science Fiction" },
     { key: "fantasy", label: "Fantasy" },
     { key: "horror", label: "Horror" }
   ];
+  var topicKeys = ["arts", "coffee", "boardgames", "quilting", "books"];
   var books = (D.books || []).slice().sort(byDate);
   var today = now.toISOString().slice(0, 10);
-  document.getElementById("bookGrid").innerHTML = genres.map(function (g) {
-    var list = books.filter(function (b) { return b.genre === g.key && (b.date || "") >= today.slice(0, b.date.length); });
-    var items = list.length ? list.map(function (b) {
-      var linkLabel = { publisher: "Publisher page", retailer: "Retailer page", listing: "Listing page" }[b.linkType] || "Book page";
-      var titleHtml = b.url
-        ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
-        : esc(b.title);
-      return '<article class="book">' +
-        '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
-        (b.series ? '<div class="series">' + esc(b.series) + '</div>' : '') +
-        '<h4 class="title">' + titleHtml + '</h4>' +
-        (b.url ? '<div class="pub"><a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(linkLabel) + ' →</a></div>' : '') +
-        (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
-        (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') +
-        (b.publisher ? '<div class="pub">' + esc(b.publisher) + '</div>' : '') +
-        '</article>';
-    }).join("") : '<p class="note">No upcoming titles listed yet.</p>';
+  var upcoming = function (b) { return (b.date || "") >= today.slice(0, (b.date || "").length); };
+
+  function bookCard(b) {
+    var linkLabel = { publisher: "Publisher page", retailer: "Retailer page", listing: "Listing page" }[b.linkType] || "Book page";
+    var titleHtml = b.url
+      ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
+      : esc(b.title);
+    return '<article class="book">' +
+      '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
+      (b.series ? '<div class="series">' + esc(b.series) + '</div>' : '') +
+      '<h4 class="title">' + titleHtml + '</h4>' +
+      (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
+      (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') +
+      (b.url ? '<div class="pub"><a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(linkLabel) + ' →</a></div>' : '') +
+      (b.publisher ? '<div class="pub">' + esc(b.publisher) + '</div>' : '') +
+      '</article>';
+  }
+
+  var topicBooks = books.filter(function (b) { return b.topic && topicKeys.indexOf(b.topic) !== -1 && upcoming(b); });
+  var topicHtml = topicBooks.length
+    ? '<div class="topic-block"><h3>On your topics</h3><div class="topic-grid">' + topicBooks.map(bookCard).join("") + '</div></div>'
+    : "";
+
+  document.getElementById("bookGrid").innerHTML = topicHtml + genres.map(function (g) {
+    var list = books.filter(function (b) { return b.genre === g.key && upcoming(b); });
+    var items = list.length ? list.map(bookCard).join("") : '<p class="note">No upcoming titles listed yet.</p>';
     return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
   }).join("");
 
@@ -227,7 +244,10 @@
     { key: "quilting", label: "Quilting" },
     { key: "cooking", label: "Cooking" },
     { key: "festivals", label: "Festivals & markets" },
-    { key: "parks", label: "Parks" }
+    { key: "parks", label: "Parks" },
+    { key: "film", label: "Film" },
+    { key: "technology", label: "Technology" },
+    { key: "history", label: "History" }
   ];
   var catLabel = {};
   categories.forEach(function (c) { catLabel[c.key] = c.label; });
@@ -249,7 +269,7 @@
 
   function tags(ev) {
     return '<div style="margin-top:8px"><span class="tag">' + esc(catLabel[ev.category] || ev.category) + '</span>' +
-      '<span class="tag">' + esc(ev.type === "class" ? "Class" : "Event") + '</span></div>';
+      '<span class="tag">' + esc(ev.type === "class" ? "Class" : ev.type === "talk" ? "Talk" : "Event") + '</span></div>';
   }
   function titleOf(ev) {
     return ev.url ? '<a href="' + esc(ev.url) + '" target="_blank" rel="noopener">' + esc(ev.title) + '</a>' : esc(ev.title);
