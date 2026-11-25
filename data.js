@@ -124,7 +124,12 @@ window.NEWSPAPER = {
       creator: "Criterion Channel",
       summary: "A Christmas Crime collection and a set of golden-age Hollywood holiday films.",
       streaming: ["Criterion Channel"],
-      url: "https://www.criterion.com/current/posts/9345-the-criterion-channel-s-december-2026-lineup" }
+      url: "https://www.criterion.com/current/posts/9345-the-criterion-channel-s-december-2026-lineup" },
+    { title: "Harry Potter (HBO series)", type: "TV series", date: "2026-12-25",
+      creator: "Based on the Harry Potter novels by J.K. Rowling.",
+      summary: "HBO's series adaptation of the Harry Potter books. Reported for December 25 by a third-party guide; HBO has not confirmed the date.",
+      streaming: ["HBO Max"], guide: true,
+      url: "https://www.sortiraparis.com/en/what-to-do-in-paris/cinema-series/guides/321902-hbo-max-december-2026-releases" }
   ],
 
   // Dated events, festivals and talks.

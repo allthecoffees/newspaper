@@ -320,7 +320,7 @@
         '<h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a></h3>' +
         (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
         (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
-        '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + '</div>' +
+        '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + (s.guide ? ' · Link is to a third-party guide' : '') + '</div>' +
         '</article>';
     }).join("") : '<div class="empty"><p>Nothing listed for this week.</p></div>';
   }
