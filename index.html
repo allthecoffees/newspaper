@@ -197,7 +197,7 @@
     { key: "nonfiction", label: "Nonfiction" },
     { key: "technology", label: "Technology" },
     { key: "film", label: "Film" },
-    { key: "historical", label: "Historical" },
+    { key: "mystery", label: "Mystery" },
     { key: "scifi", label: "Science Fiction" },
     { key: "fantasy", label: "Fantasy" },
     { key: "horror", label: "Horror" }
@@ -208,18 +208,14 @@
   var upcoming = function (b) { return (b.date || "") >= today.slice(0, (b.date || "").length); };
 
   function bookCard(b) {
-    var linkLabel = { publisher: "Publisher page", retailer: "Retailer page", listing: "Listing page" }[b.linkType] || "Book page";
     var titleHtml = b.url
       ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
       : esc(b.title);
     return '<article class="book">' +
       '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
-      (b.series ? '<div class="series">' + esc(b.series) + '</div>' : '') +
       '<h4 class="title">' + titleHtml + '</h4>' +
       (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
-      (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') +
-      (b.url ? '<div class="pub"><a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(linkLabel) + ' →</a></div>' : '') +
-      (b.publisher ? '<div class="pub">' + esc(b.publisher) + '</div>' : '') +
+      (b.summary ? '<p class="note">' + esc(b.summary) + '</p>' : '') +
       '</article>';
   }
 
