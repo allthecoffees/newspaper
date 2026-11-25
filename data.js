@@ -119,7 +119,12 @@ window.NEWSPAPER = {
       creator: "Directed by Quinn Whitney Wilson and Viridiana Lieberman.",
       summary: "The first Basquiat documentary approved by the artist's estate. Runtime 95 minutes.",
       streaming: ["Netflix"],
-      url: "https://www.netflix.com/tudum/articles/jean-michel-basquiat-release-date-news" }
+      url: "https://www.netflix.com/tudum/articles/jean-michel-basquiat-release-date-news" },
+    { title: "Criterion Channel December 2026 lineup", type: "Streaming collection", date: "2026-12-01",
+      creator: "Criterion Channel",
+      summary: "A Christmas Crime collection and a set of golden-age Hollywood holiday films.",
+      streaming: ["Criterion Channel"],
+      url: "https://www.criterion.com/current/posts/9345-the-criterion-channel-s-december-2026-lineup" }
   ],
 
   // Dated events, festivals and talks.
