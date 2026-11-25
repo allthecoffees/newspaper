@@ -234,7 +234,10 @@
     return '<li><a href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(t.label) + '</a></li>';
   }).join("");
   document.getElementById("trendingListBooks").innerHTML = document.getElementById("trendingList").innerHTML;
-  document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
+  document.getElementById("sourceList").innerHTML = (D.sources || []).map(function (src) {
+    return typeof src === "string" ? esc(src)
+      : '<a href="' + esc(src.url) + '" target="_blank" rel="noopener">' + esc(src.name) + '</a>';
+  }).join(" · ");
 
   // Editions: the current week plus any archived past weeks, newest first.
   var current = { weekOf: D.weekOf || D.lastUpdated || "", isCurrent: true,
