@@ -21,7 +21,7 @@
  */
 window.NEWSPAPER = {
   title: "Strange and Unusual",
-  tagline: "Books, Screens & Local Oddities",
+  tagline: "Books, Screens, Local and Online Oddities",
   city: "Columbus, Ohio",  // set to the city you want local events for, e.g. "Portland, OR"
   lastUpdated: "2026-11-25",
   weekOf: "2026-11-23",  // Monday of the week this edition covers
