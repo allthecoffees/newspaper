@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Daily Shelf</title>
+<meta name="description" content="Upcoming sci-fi, fantasy and horror releases, plus local events for readers, makers and coffee drinkers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Franklin:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f3ea;
+    --ink: #1b1a17;
+    --muted: #6b665c;
+    --rule: #1b1a17;
+    --accent: #9b2c1f;
+    --card: #fffdf8;
+    --tag-bg: #ece5d4;
+    --serif-head: "Playfair Display", Georgia, serif;
+    --sans: "Libre Franklin", Arial, sans-serif;
+    --body: "Source Serif 4", Georgia, serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #181714;
+      --ink: #ece7dc;
+      --muted: #a39d90;
+      --rule: #ece7dc;
+      --accent: #e0705f;
+      --card: #201e1a;
+      --tag-bg: #2d2a24;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #181714;
+    --ink: #ece7dc;
+    --muted: #a39d90;
+    --rule: #ece7dc;
+    --accent: #e0705f;
+    --card: #201e1a;
+    --tag-bg: #2d2a24;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body { font-family: var(--body); font-size: 17px; line-height: 1.5; }
+  a { color: var(--ink); }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+  /* Masthead */
+  .topline { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
+    border-bottom: 1px solid var(--rule); }
+  .masthead { text-align: center; padding: 18px 0 10px; border-bottom: 4px double var(--rule); }
+  .masthead h1 { font-family: var(--serif-head); font-weight: 900; font-size: clamp(40px, 9vw, 84px);
+    line-height: 1; margin: 0; letter-spacing: -.01em; }
+  .tagline { font-style: italic; color: var(--muted); margin: 8px 0 0; }
+  .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-family: var(--sans);
+    font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+  .nav a { text-decoration: none; }
+  .nav a:hover { color: var(--accent); }
+  .theme-btn { font: inherit; font-size: 12px; background: none; border: 1px solid var(--rule); color: var(--ink);
+    padding: 2px 8px; cursor: pointer; }
+
+  /* Section heads */
+  section { padding: 22px 0; border-bottom: 1px solid var(--rule); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+    border-top: 3px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 6px 0; margin-bottom: 18px; }
+  .section-head h2 { font-family: var(--serif-head); font-size: clamp(26px, 5vw, 36px); margin: 0; font-weight: 900; }
+  .kicker { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); font-weight: 700; }
+  .dek { font-style: italic; color: var(--muted); margin: -8px 0 16px; }
+
+  /* Book columns */
+  .genre-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  @media (min-width: 800px) { .genre-grid { grid-template-columns: repeat(3, 1fr); }
+    .genre-grid > div + div { border-left: 1px solid var(--rule); padding-left: 20px; } }
+  .genre-grid h3 { font-family: var(--serif-head); font-size: 22px; margin: 0 0 10px; }
+  .book { padding: 12px 0; border-bottom: 1px dotted var(--muted); }
+  .book:last-child { border-bottom: 0; }
+  .book .when { font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+  .book .title { font-family: var(--serif-head); font-size: 19px; font-weight: 700; line-height: 1.2; margin: 2px 0; }
+  .book .by { font-style: italic; color: var(--muted); margin: 0; }
+  .book .series { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+  .book .note { font-size: 15px; margin: 4px 0 0; }
+  .book .pub { font-family: var(--sans); font-size: 12px; color: var(--muted); }
+
+  /* Events */
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .filters button { font-family: var(--sans); font-size: 13px; background: var(--tag-bg); color: var(--ink);
+    border: 1px solid var(--rule); padding: 5px 12px; cursor: pointer; border-radius: 999px; }
+  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .events { display: grid; grid-template-columns: 1fr; gap: 14px; }
+  @media (min-width: 700px) { .events { grid-template-columns: 1fr 1fr; } }
+  .event { background: var(--card); border: 1px solid var(--rule); padding: 14px 16px; }
+  .event .when { font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--accent); }
+  .event h3 { font-family: var(--serif-head); font-size: 19px; margin: 4px 0; }
+  .event .meta { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+  .tag { display: inline-block; font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
+    background: var(--tag-bg); padding: 2px 8px; margin-right: 6px; }
+  .empty { border: 1px dashed var(--rule); padding: 18px; background: var(--card); }
+  .empty p { margin: 0 0 8px; }
+
+  footer { font-family: var(--sans); font-size: 13px; color: var(--muted); padding: 20px 0 36px; }
+  footer p { margin: 4px 0; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topline">
+    <span id="dateline"></span>
+    <span id="updated"></span>
+  </div>
+
+  <header class="masthead">
+    <h1 id="title">The Daily Shelf</h1>
+    <p class="tagline" id="tagline"></p>
+  </header>
+
+  <nav class="nav" aria-label="Sections">
+    <a href="#books">Book releases</a>
+    <a href="#events">Local events</a>
+    <a href="#sources">Sources</a>
+    <button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
+  </nav>
+
+  <section id="books">
+    <div class="section-head">
+      <h2>Upcoming Releases</h2>
+      <span class="kicker">Sci-fi · Fantasy · Horror</span>
+    </div>
+    <p class="dek">What's landing next, sorted by publication date. Dates come from listings and may change.</p>
+    <div class="genre-grid" id="bookGrid"></div>
+  </section>
+
+  <section id="events">
+    <div class="section-head">
+      <h2>Local Events &amp; Classes</h2>
+      <span class="kicker" id="cityLabel">Books · Authors · Arts · Coffee · Board games · Quilting · Cooking</span>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter events by category"></div>
+    <div id="eventList"></div>
+  </section>
+
+  <section id="sources">
+    <div class="section-head"><h2>Sources &amp; Notes</h2></div>
+    <p id="sourceList"></p>
+    <p style="font-family: var(--sans); font-size: 14px; color: var(--muted);">
+      Release dates come from retailer and aggregator listings and may change. Confirm with the publisher before pre-ordering.
+      To update the page, edit <code>data.js</code>.
+    </p>
+  </section>
+
+  <footer>
+    <p>The Daily Shelf · a static page, no tracking.</p>
+  </footer>
+</div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  var D = window.NEWSPAPER || {};
+  var esc = function (s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  };
+
+  // Dates: "YYYY-MM-DD" shows the full day; "YYYY-MM" shows only the month.
+  function fmtDate(iso) {
+    if (!iso) return "";
+    var parts = iso.split("-").map(Number);
+    var months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    if (parts.length === 2) return months[parts[1] - 1] + " " + parts[0];
+    var d = new Date(parts[0], parts[1] - 1, parts[2]);
+    return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
+  }
+  function byDate(a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; }
+
+  // Masthead
+  var now = new Date();
+  document.getElementById("dateline").textContent =
+    now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  document.getElementById("updated").textContent = D.lastUpdated ? "Data updated " + fmtDate(D.lastUpdated) : "";
+  document.getElementById("title").textContent = D.title || "The Daily Shelf";
+  document.getElementById("tagline").textContent = D.tagline || "";
+  document.title = (D.title || "The Daily Shelf");
+
+  // Books: three genre columns
+  var genres = [
+    { key: "scifi", label: "Science Fiction" },
+    { key: "fantasy", label: "Fantasy" },
+    { key: "horror", label: "Horror" }
+  ];
+  var books = (D.books || []).slice().sort(byDate);
+  var today = now.toISOString().slice(0, 10);
+  document.getElementById("bookGrid").innerHTML = genres.map(function (g) {
+    var list = books.filter(function (b) { return b.genre === g.key && (b.date || "") >= today.slice(0, b.date.length); });
+    var items = list.length ? list.map(function (b) {
+      return '<article class="book">' +
+        '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
+        (b.series ? '<div class="series">' + esc(b.series) + '</div>' : '') +
+        '<h4 class="title">' + esc(b.title) + '</h4>' +
+        (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
+        (b.note ? '<p class="note">' + esc(b.note) + '</p>' : '') +
+        (b.publisher ? '<div class="pub">' + esc(b.publisher) + '</div>' : '') +
+        '</article>';
+    }).join("") : '<p class="note">No upcoming titles listed yet.</p>';
+    return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
+  }).join("");
+
+  // Events: category filters and list
+  var categories = [
+    { key: "all", label: "All" },
+    { key: "books", label: "Books & authors" },
+    { key: "arts", label: "Arts" },
+    { key: "coffee", label: "Coffee" },
+    { key: "boardgames", label: "Board games" },
+    { key: "quilting", label: "Quilting" },
+    { key: "cooking", label: "Cooking" }
+  ];
+  var catLabel = {};
+  categories.forEach(function (c) { catLabel[c.key] = c.label; });
+  var active = "all";
+
+  var filtersEl = document.getElementById("filters");
+  function renderFilters() {
+    filtersEl.innerHTML = categories.map(function (c) {
+      return '<button type="button" data-cat="' + c.key + '" aria-pressed="' + (c.key === active) + '">' + esc(c.label) + '</button>';
+    }).join("");
+  }
+  filtersEl.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-cat]");
+    if (!btn) return;
+    active = btn.getAttribute("data-cat");
+    renderFilters();
+    renderEvents();
+  });
+
+  function renderEvents() {
+    var el = document.getElementById("eventList");
+    var events = (D.events || []).slice().sort(byDate);
+    if (!events.length) {
+      el.innerHTML = '<div class="empty"><p><strong>Local listings haven\'t been loaded yet.</strong></p>' +
+        '<p>Set a city in <code>data.js</code> (the <code>city</code> field) and events for books, authors, arts, coffee, board games, quilting and cooking will appear here, including classes.</p></div>';
+      return;
+    }
+    var shown = events.filter(function (ev) { return active === "all" || ev.category === active; });
+    el.innerHTML = shown.length ? '<div class="events">' + shown.map(function (ev) {
+      return '<article class="event">' +
+        '<div class="when">' + esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : '') + '</div>' +
+        '<h3>' + (ev.url ? '<a href="' + esc(ev.url) + '">' + esc(ev.title) + '</a>' : esc(ev.title)) + '</h3>' +
+        '<div class="meta">' + esc(ev.venue || "") + (ev.price ? ' · ' + esc(ev.price) : '') + '</div>' +
+        '<div style="margin-top:8px"><span class="tag">' + esc(catLabel[ev.category] || ev.category) + '</span>' +
+        '<span class="tag">' + esc(ev.type === "class" ? "Class" : "Event") + '</span></div>' +
+        '</article>';
+    }).join("") + '</div>' : '<p class="note">Nothing in this category yet.</p>';
+  }
+
+  if (D.city) document.getElementById("cityLabel").textContent = D.city;
+  renderFilters();
+  renderEvents();
+
+  // Sources
+  document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
+
+  // Theme toggle (remembered per viewer; optional)
+  var root = document.documentElement;
+  try {
+    var saved = localStorage.getItem("shelf-theme");
+    if (saved) root.setAttribute("data-theme", saved);
+  } catch (e) {}
+  document.getElementById("themeToggle").addEventListener("click", function () {
+    var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var current = root.getAttribute("data-theme") || (dark ? "dark" : "light");
+    var next = current === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("shelf-theme", next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>
