@@ -293,7 +293,22 @@ window.NEWSPAPER = {
     { label: "NYT Best Sellers", url: "https://www.nytimes.com/books/best-sellers/" },
     { label: "Publishers Weekly bestsellers", url: "https://www.publishersweekly.com/pw/nielsen/HardcoverNonfiction.html" },
     { label: "Netflix Top 10", url: "https://top10.netflix.com" },
-    { label: "Rotten Tomatoes popular movies", url: "https://editorial.rottentomatoes.com/guide/popular-movies/" }
+    { label: "Rotten Tomatoes popular movies", url: "https://editorial.rottentomatoes.com/guide/popular-movies/" },
+    { title: "Middleman", source: "Kirkus Reviews", date: "2026-11-10", topic: "",
+      summary: "Kirkus's review of Brendan Flaherty's darkly comic novel, which is about more than climate change.",
+      url: "https://www.kirkusreviews.com/book-reviews/brendan-flaherty/middleman/" },
+    { title: "This Impossible Life", source: "Kirkus Reviews", date: "2026-11-10", topic: "",
+      summary: "Kirkus's review of Chinelo Okparanta's novel about a brother and sister orphaned in Lagos.",
+      url: "https://www.kirkusreviews.com/book-reviews/chinelo-okparanta/this-impossible-life/" },
+    { title: "Stations", source: "Kirkus Reviews", date: "2026-11-03", topic: "",
+      summary: "Kirkus's review of Louise Kennedy's novel, described as sad but hopeful.",
+      url: "https://www.kirkusreviews.com/book-reviews/louise-kennedy/stations/" },
+    { title: "November's best sci-fi and fantasy books", source: "Lit Hub", date: "2026-11", topic: "",
+      summary: "A monthly roundup of new sci-fi and fantasy, including a vampiric horror novel due November 10.",
+      url: "https://lithub.com/vampiric-broodmothers-gig-economy-ghosts-and-medieval-abortionists-novembers-best-sci-fi-and-fantasy-books/" },
+    { title: "New science fiction and fantasy books to read in November 2026", source: "Book Riot", date: "2026-11", topic: "",
+      summary: "Book Riot's monthly list of new sci-fi and fantasy titles.",
+      url: "https://bookriot.com/science-fiction-and-fantasy-books-november-2026/" }
   ],
 
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
@@ -345,6 +360,15 @@ window.NEWSPAPER = {
     "Columbus Monthly",
     "CityScene Columbus",
     "Experience Columbus",
-    "Axios Columbus"
+    "Axios Columbus",
+    "Kirkus Reviews",
+    "Book Riot",
+    "AV Club",
+    "Strange Horizons",
+    "Reactor",
+    "Los Angeles Review of Books",
+    "The Guardian",
+    "The New York Times",
+    "Locus"
   ]
 };

@@ -152,6 +152,8 @@
     <p class="dek">What's landing next, sorted by publication date.</p>
     <div class="filters" id="bookFilters" role="group" aria-label="Filter books by genre"></div>
     <div class="genre-grid" id="bookGrid"></div>
+    <div class="section-head" style="margin-top:22px"><h2 style="font-size:22px">Check what's trending</h2></div>
+    <ul id="trendingListBooks" style="font-family: var(--sans); font-size: 15px; padding-left: 18px"></ul>
   </section>
 
   <section id="screen">
@@ -231,6 +233,7 @@
   document.getElementById("trendingList").innerHTML = (D.trendingLinks || []).map(function (t) {
     return '<li><a href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(t.label) + '</a></li>';
   }).join("");
+  document.getElementById("trendingListBooks").innerHTML = document.getElementById("trendingList").innerHTML;
   document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
 
   // Editions: the current week plus any archived past weeks, newest first.
