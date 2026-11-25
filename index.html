@@ -97,6 +97,8 @@
   .event .meta { font-family: var(--sans); font-size: 13px; color: var(--muted); }
   .tag { display: inline-block; font-family: var(--sans); font-size: 11px; text-transform: uppercase; letter-spacing: .06em;
     background: var(--tag-bg); padding: 2px 8px; margin-right: 6px; }
+  .subhead { font-family: var(--serif-head); font-size: 20px; margin: 22px 0 10px; font-weight: 700; }
+  .subhead:first-child { margin-top: 0; }
   .empty { border: 1px dashed var(--rule); padding: 18px; background: var(--card); }
   .empty p { margin: 0 0 8px; }
 
@@ -238,24 +240,48 @@
     renderEvents();
   });
 
+  function tags(ev) {
+    return '<div style="margin-top:8px"><span class="tag">' + esc(catLabel[ev.category] || ev.category) + '</span>' +
+      '<span class="tag">' + esc(ev.type === "class" ? "Class" : "Event") + '</span></div>';
+  }
+  function titleOf(ev) {
+    return ev.url ? '<a href="' + esc(ev.url) + '">' + esc(ev.title) + '</a>' : esc(ev.title);
+  }
+
   function renderEvents() {
     var el = document.getElementById("eventList");
     var events = (D.events || []).slice().sort(byDate);
-    if (!events.length) {
+    var recurring = D.recurring || [];
+    if (!events.length && !recurring.length) {
       el.innerHTML = '<div class="empty"><p><strong>Local listings haven\'t been loaded yet.</strong></p>' +
         '<p>Set a city in <code>data.js</code> (the <code>city</code> field) and events for books, authors, arts, coffee, board games, quilting and cooking will appear here, including classes.</p></div>';
       return;
     }
     var shown = events.filter(function (ev) { return active === "all" || ev.category === active; });
-    el.innerHTML = shown.length ? '<div class="events">' + shown.map(function (ev) {
+    var ongoing = recurring.filter(function (r) { return active === "all" || r.category === active; });
+
+    var html = "";
+    html += '<h3 class="subhead">Dated this month and next</h3>';
+    html += shown.length ? '<div class="events">' + shown.map(function (ev) {
       return '<article class="event">' +
         '<div class="when">' + esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : '') + '</div>' +
-        '<h3>' + (ev.url ? '<a href="' + esc(ev.url) + '">' + esc(ev.title) + '</a>' : esc(ev.title)) + '</h3>' +
+        '<h3>' + titleOf(ev) + '</h3>' +
         '<div class="meta">' + esc(ev.venue || "") + (ev.price ? ' · ' + esc(ev.price) : '') + '</div>' +
-        '<div style="margin-top:8px"><span class="tag">' + esc(catLabel[ev.category] || ev.category) + '</span>' +
-        '<span class="tag">' + esc(ev.type === "class" ? "Class" : "Event") + '</span></div>' +
-        '</article>';
+        (ev.note ? '<p class="note" style="margin:6px 0 0">' + esc(ev.note) + '</p>' : '') +
+        tags(ev) + '</article>';
+    }).join("") + '</div>' : '<p class="note">No dated listings in this category yet.</p>';
+
+    html += '<h3 class="subhead">Ongoing groups and classes</h3>';
+    html += ongoing.length ? '<div class="events">' + ongoing.map(function (r) {
+      return '<article class="event">' +
+        '<div class="when">' + esc(r.when || "") + '</div>' +
+        '<h3>' + titleOf(r) + '</h3>' +
+        '<div class="meta">' + esc(r.venue || "") + '</div>' +
+        (r.note ? '<p class="note" style="margin:6px 0 0">' + esc(r.note) + '</p>' : '') +
+        tags(r) + '</article>';
     }).join("") + '</div>' : '<p class="note">Nothing in this category yet.</p>';
+
+    el.innerHTML = html;
   }
 
   if (D.city) document.getElementById("cityLabel").textContent = D.city;

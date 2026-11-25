@@ -12,7 +12,7 @@
 window.NEWSPAPER = {
   title: "The Daily Shelf",
   tagline: "New books and local happenings for readers, makers and coffee drinkers",
-  city: "",            // set to the city you want local events for, e.g. "Portland, OR"
+  city: "Columbus, Ohio",  // set to the city you want local events for, e.g. "Portland, OR"
   lastUpdated: "2026-11-25",
 
   books: [
@@ -61,11 +61,45 @@ window.NEWSPAPER = {
       genre: "horror", date: "2026-12-08", publisher: "", note: "Horror comedy; fifth John Dies at the End book." }
   ],
 
+  // Dated events with a known date in the window.
   events: [
-    // Example shape (remove or replace once a city is set):
-    // { title: "Monthly Board Game Night", date: "2026-12-05", time: "7:00 PM",
-    //   venue: "Local Coffee House", category: "boardgames", type: "event",
-    //   url: "https://example.com", price: "Free" }
+    { title: "Creamy Cajun Fettuccine Pasta Making Class", date: "2026-12-03", time: "6:00 PM",
+      venue: "ClassBento, Columbus", category: "cooking", type: "class",
+      url: "https://classbento.com/creamy-cajun-fettuccine-pasta-making-class-columbus",
+      price: "$60", note: "Two-hour beginner class." },
+    { title: "Pulp Stiction (collage exhibition)", date: "2026-12-11", time: "",
+      venue: "Hopkins Hall Gallery, Ohio State campus", category: "arts", type: "event",
+      url: "", price: "Free", note: "Exhibition runs through December 11." }
+  ],
+
+  // Ongoing groups and classes that run on a schedule. Dates are not confirmed for December.
+  recurring: [
+    { title: "CABS board game club", category: "boardgames", type: "event",
+      when: "Saturdays, doors 10am", venue: "CABS, Columbus",
+      note: "2,000+ games on site. First visit is free. Check the CABS site for current hours." },
+    { title: "All Fem Board Game Night (FANG)", category: "boardgames", type: "event",
+      when: "Check Meetup for dates", venue: "Columbus",
+      note: "All-female board game group playing modern hobby games." },
+    { title: "Columbus Chess Club", category: "boardgames", type: "event",
+      when: "Sundays", venue: "Columbus",
+      note: "All ages and skill levels." },
+    { title: "Crimson Cup coffee classes", category: "coffee", type: "class",
+      when: "Check Crimson Cup's schedule", venue: "Crimson Cup Innovation Lab and Easton Side Bar",
+      note: "Espresso and brewing courses. December dates not confirmed." },
+    { title: "Authors at the Library", category: "books", type: "event",
+      when: "2026 lineup, see library calendar", venue: "Columbus Metropolitan Library",
+      url: "https://www.columbuslibrary.org/authors-at-the-library",
+      note: "Author talks. No December date confirmed." },
+    { title: "Cooking classes", category: "cooking", type: "class",
+      when: "Various dates", venue: "Cozymeal, Columbus",
+      url: "https://www.cozymeal.com/cooking-class/61693/seasonal-winter-harvest-dinner",
+      note: "Several Columbus classes listed at about $89 for a four-course meal. Most listings show no December date." },
+    { title: "Quilting series", category: "quilting", type: "class",
+      when: "Check registration", venue: "Columbus Recreation and Parks",
+      note: "Past sessions ran in 2024 and 2025. A December 2026 session is unconfirmed." },
+    { title: "Quilting: Life's a Stitch", category: "quilting", type: "class",
+      when: "October 8 to December 31, 2026", venue: "SourcePoint Enrichment Center, Delaware, Ohio",
+      note: "About 20 miles north of Columbus. Listed for ages 55 and up." }
   ],
 
   sources: [
