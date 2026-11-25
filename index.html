@@ -280,7 +280,7 @@
       ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
       : esc(b.title);
     return '<article class="book">' +
-      '<div class="when">' + esc(fmtDate(b.date)) + '</div>' +
+      '<div class="when">' + (b.trending ? 'Trending now' : esc(fmtDate(b.date))) + '</div>' +
       '<h4 class="title">' + titleHtml + '</h4>' +
       (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
       (b.summary ? '<p class="note">' + esc(b.summary) + '</p>' : '') +

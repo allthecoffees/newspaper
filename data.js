@@ -105,7 +105,15 @@ window.NEWSPAPER = {
       url: "https://www.webull.com/news/15701184535151616" },
     { title: "How to AI", author: "Christopher Mims", genre: "technology", date: "2027-01-14",
       summary: "",
-      url: "https://www.hachette.co.uk/titles/christopher-mims/how-to-ai/9781035441051/" }
+      url: "https://www.hachette.co.uk/titles/christopher-mims/how-to-ai/9781035441051/" },
+    // Trending now: on recent bestseller roundups
+    { title: "Dungeon Crawler Carl", author: "Matt Dinniman", genre: "scifi", date: "", trending: true,
+      summary: "Matt Dinniman's LitRPG series, on a recent weekly bestseller roundup.",
+      url: "https://bookriot.com/bestselling-books-of-the-week-november-12-2026/" },
+    { title: "The Hollow", author: "Michael Connelly", genre: "mystery", date: "", trending: true,
+      summary: "Michael Connelly's new novel, on a recent weekly bestseller roundup.",
+      url: "https://bookriot.com/bestselling-books-november-19-2026/" }
+
   ],
 
   // On screen: new or coming to streaming, linked to the books and topics above.
