@@ -161,6 +161,8 @@
     </div>
     <p class="dek">New or coming to streaming, connected to the books and topics above.</p>
     <div class="events" id="screenList"></div>
+    <div class="section-head" style="margin-top:22px"><h2 style="font-size:22px">Check what's trending</h2></div>
+    <ul id="trendingList" style="font-family: var(--sans); font-size: 15px; padding-left: 18px"></ul>
   </section>
 
   <section id="events">
@@ -226,6 +228,9 @@
   document.getElementById("tagline").textContent = D.tagline || "";
   document.title = (D.title || "Strange and Unusual");
   if (D.city) document.getElementById("cityLabel").textContent = D.city;
+  document.getElementById("trendingList").innerHTML = (D.trendingLinks || []).map(function (t) {
+    return '<li><a href="' + esc(t.url) + '" target="_blank" rel="noopener">' + esc(t.label) + '</a></li>';
+  }).join("");
   document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
 
   // Editions: the current week plus any archived past weeks, newest first.

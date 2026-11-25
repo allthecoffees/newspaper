@@ -288,6 +288,14 @@ window.NEWSPAPER = {
       url: "https://www.axios.com/local/columbus/2026/11/06/weekend-events-things-to-do-maybe-happy-ending-cranksgiving" }
   ],
 
+  // Where to check what is trending now (linked from the Streaming and Books sections).
+  trendingLinks: [
+    { label: "NYT Best Sellers", url: "https://www.nytimes.com/books/best-sellers/" },
+    { label: "Publishers Weekly bestsellers", url: "https://www.publishersweekly.com/pw/nielsen/HardcoverNonfiction.html" },
+    { label: "Netflix Top 10", url: "https://top10.netflix.com" },
+    { label: "Rotten Tomatoes popular movies", url: "https://editorial.rottentomatoes.com/guide/popular-movies/" }
+  ],
+
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
   archive: [],
 
