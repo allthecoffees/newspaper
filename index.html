@@ -56,12 +56,20 @@
   .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(44px, 10vw, 96px);
     line-height: 1.05; margin: 0; letter-spacing: 0; }
   .tagline { font-style: italic; color: var(--muted); margin: 8px 0 0; }
-  .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px 18px; font-family: var(--sans);
-    font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 10px 0; border-bottom: 1px solid var(--rule); }
-  .nav a { text-decoration: none; }
-  .nav a:hover { color: var(--accent); }
-  .theme-btn { font: inherit; font-size: 12px; background: none; border: 1px solid var(--rule); color: var(--ink);
-    padding: 2px 8px; cursor: pointer; }
+  .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; font-family: var(--sans);
+    font-size: 14px; text-transform: uppercase; letter-spacing: .06em; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+  .nav-btn { font: inherit; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; background: none;
+    border: 1px solid var(--rule); color: var(--ink); padding: 4px 12px; cursor: pointer; text-decoration: none;
+    display: inline-block; }
+  .nav-btn:hover, .nav-btn:focus-visible { background: var(--ink); color: var(--paper); }
+
+  /* Edition selector */
+  .editions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; align-items: center; padding: 12px 0;
+    border-bottom: 1px solid var(--rule); font-family: var(--sans); font-size: 13px; }
+  .editions .label { text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-right: 4px; }
+  .editions button { font: inherit; background: none; border: 1px solid var(--rule); color: var(--ink);
+    padding: 4px 12px; cursor: pointer; }
+  .editions button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
   /* Section heads */
   section { padding: 22px 0; border-bottom: 1px solid var(--rule); }
@@ -84,15 +92,15 @@
   .book .when { font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
   .book .title { font-family: var(--serif-head); font-size: 19px; font-weight: 700; line-height: 1.2; margin: 2px 0; }
   .book .by { font-style: italic; color: var(--muted); margin: 0; }
-  .book .series { font-family: var(--sans); font-size: 12px; color: var(--muted); }
   .book .note { font-size: 15px; margin: 4px 0 0; }
-  .book .pub { font-family: var(--sans); font-size: 12px; color: var(--muted); }
 
-  /* Events */
+  /* Filters */
   .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
   .filters button { font-family: var(--sans); font-size: 13px; background: var(--tag-bg); color: var(--ink);
     border: 1px solid var(--rule); padding: 5px 12px; cursor: pointer; border-radius: 999px; }
   .filters button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+  /* Cards */
   .events { display: grid; grid-template-columns: 1fr; gap: 14px; }
   @media (min-width: 700px) { .events { grid-template-columns: 1fr 1fr; } }
   .event { background: var(--card); border: 1px solid var(--rule); padding: 14px 16px; }
@@ -108,7 +116,6 @@
 
   footer { font-family: var(--sans); font-size: 13px; color: var(--muted); padding: 20px 0 36px; }
   footer p { margin: 4px 0; }
-  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
 </style>
 </head>
 <body>
@@ -125,12 +132,14 @@
   </header>
 
   <nav class="nav" aria-label="Sections">
-    <a href="#books">Book releases</a>
-    <a href="#screen">On screen</a>
-    <a href="#events">Local events</a>
-    <a href="#sources">Sources</a>
-    <button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
+    <a class="nav-btn" href="#books">Book releases</a>
+    <a class="nav-btn" href="#screen">On screen</a>
+    <a class="nav-btn" href="#events">Local events</a>
+    <a class="nav-btn" href="#sources">Sources</a>
+    <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
   </nav>
+
+  <div class="editions" id="editionFilters" role="group" aria-label="Choose a weekly edition"></div>
 
   <section id="books">
     <div class="section-head">
@@ -197,14 +206,49 @@
 
   // Masthead
   var now = new Date();
+  var today = now.toISOString().slice(0, 10);
   document.getElementById("dateline").textContent =
     now.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
   document.getElementById("updated").textContent = D.lastUpdated ? "Data updated " + fmtDate(D.lastUpdated) : "";
   document.getElementById("title").textContent = D.title || "Strange and Unusual";
   document.getElementById("tagline").textContent = D.tagline || "";
   document.title = (D.title || "Strange and Unusual");
+  if (D.city) document.getElementById("cityLabel").textContent = D.city;
+  document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
 
-  // Books: an "On your topics" block first, then one column per genre
+  // Editions: the current week plus any archived past weeks, newest first.
+  var current = { weekOf: D.weekOf || D.lastUpdated || "", isCurrent: true,
+    books: D.books, screen: D.screen, events: D.events, recurring: D.recurring };
+  var past = (D.archive || []).slice().sort(function (a, b) { return a.weekOf < b.weekOf ? 1 : -1; })
+    .map(function (e) { return { weekOf: e.weekOf, isCurrent: false, books: e.books, screen: e.screen, events: e.events, recurring: e.recurring }; });
+  var editions = [current].concat(past);
+  var selected = 0;
+  var editionsEl = document.getElementById("editionFilters");
+
+  function editionLabel(e, i) {
+    return i === 0 ? "This week" : "Week of " + fmtDate(e.weekOf);
+  }
+  function renderEditionFilters() {
+    if (editions.length < 2) { editionsEl.hidden = true; return; }
+    editionsEl.hidden = false;
+    editionsEl.innerHTML = '<span class="label">Week</span>' + editions.map(function (e, i) {
+      return '<button type="button" data-edition="' + i + '" aria-pressed="' + (i === selected) + '">' + esc(editionLabel(e, i)) + '</button>';
+    }).join("");
+  }
+  editionsEl.addEventListener("click", function (ev) {
+    var btn = ev.target.closest("button[data-edition]");
+    if (!btn) return;
+    selected = Number(btn.getAttribute("data-edition"));
+    renderAll();
+  });
+
+  // Keeps only items still upcoming in the current week; past weeks show everything as published.
+  function keep(item) {
+    if (!editions[selected].isCurrent) return true;
+    return (item.date || "") >= today.slice(0, (item.date || "").length);
+  }
+
+  // Books
   var genres = [
     { key: "nonfiction", label: "Nonfiction" },
     { key: "technology", label: "Technology" },
@@ -215,9 +259,9 @@
     { key: "horror", label: "Horror" }
   ];
   var topicKeys = ["arts", "coffee", "boardgames", "quilting", "books"];
-  var books = (D.books || []).slice().sort(byDate);
-  var today = now.toISOString().slice(0, 10);
-  var upcoming = function (b) { return (b.date || "") >= today.slice(0, (b.date || "").length); };
+  var activeBook = "all";
+  var bookGenreList = [{ key: "all", label: "All" }].concat(genres);
+  var bookFiltersEl = document.getElementById("bookFilters");
 
   function bookCard(b) {
     var titleHtml = b.url
@@ -231,52 +275,48 @@
       '</article>';
   }
 
-  var topicBooks = books.filter(function (b) { return b.topic && topicKeys.indexOf(b.topic) !== -1 && upcoming(b); });
-  var topicHtml = topicBooks.length
-    ? '<div class="topic-block"><h3>On your topics</h3><div class="topic-grid">' + topicBooks.map(bookCard).join("") + '</div></div>'
-    : "";
-
-  // Genre filter buttons, same style as the event filters
-  var bookGenreList = [{ key: "all", label: "All" }].concat(genres);
-  var activeBook = "all";
-  var bookFiltersEl = document.getElementById("bookFilters");
   function renderBookFilters() {
     bookFiltersEl.innerHTML = bookGenreList.map(function (g) {
       return '<button type="button" data-genre="' + g.key + '" aria-pressed="' + (g.key === activeBook) + '">' + esc(g.label) + '</button>';
-    }).join("");
-  }
-  function renderBooks() {
-    var cols = genres.filter(function (g) { return activeBook === "all" || g.key === activeBook; });
-    var topic = activeBook === "all" ? topicHtml : "";
-    document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g) {
-      var list = books.filter(function (b) { return b.genre === g.key && upcoming(b); });
-      var items = list.length ? list.map(bookCard).join("") : '<p class="note">No upcoming titles listed yet.</p>';
-      return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
     }).join("");
   }
   bookFiltersEl.addEventListener("click", function (e) {
     var btn = e.target.closest("button[data-genre]");
     if (!btn) return;
     activeBook = btn.getAttribute("data-genre");
-    renderBookFilters();
     renderBooks();
   });
-  renderBookFilters();
-  renderBooks();
 
-  // On screen: movies, TV and documentaries
-  var screenItems = (D.screen || []).slice().sort(byDate).filter(upcoming);
-  document.getElementById("screenList").innerHTML = screenItems.length ? screenItems.map(function (s) {
-    return '<article class="event">' +
-      '<div class="when">' + esc(fmtDate(s.date)) + ' · ' + esc(s.type || "") + '</div>' +
-      '<h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a></h3>' +
-      (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
-      (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
-      '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + '</div>' +
-      '</article>';
-  }).join("") : '<div class="empty"><p>Nothing listed yet.</p></div>';
+  function renderBooks() {
+    var books = (editions[selected].books || []).slice().sort(byDate);
+    var topicBooks = books.filter(function (b) { return b.topic && topicKeys.indexOf(b.topic) !== -1 && keep(b); });
+    var topicHtml = topicBooks.length
+      ? '<div class="topic-block"><h3>On your topics</h3><div class="topic-grid">' + topicBooks.map(bookCard).join("") + '</div></div>'
+      : "";
+    var cols = genres.filter(function (g) { return activeBook === "all" || g.key === activeBook; });
+    var topic = activeBook === "all" ? topicHtml : "";
+    document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g) {
+      var list = books.filter(function (b) { return b.genre === g.key && keep(b); });
+      var items = list.length ? list.map(bookCard).join("") : '<p class="note">No titles listed for this week.</p>';
+      return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
+    }).join("");
+  }
 
-  // Events: category filters and list
+  // On screen
+  function renderScreen() {
+    var items = (editions[selected].screen || []).slice().sort(byDate).filter(keep);
+    document.getElementById("screenList").innerHTML = items.length ? items.map(function (s) {
+      return '<article class="event">' +
+        '<div class="when">' + esc(fmtDate(s.date)) + ' · ' + esc(s.type || "") + '</div>' +
+        '<h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a></h3>' +
+        (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
+        (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
+        '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + '</div>' +
+        '</article>';
+    }).join("") : '<div class="empty"><p>Nothing listed for this week.</p></div>';
+  }
+
+  // Events
   var categories = [
     { key: "all", label: "All" },
     { key: "books", label: "Books & authors" },
@@ -294,8 +334,8 @@
   var catLabel = {};
   categories.forEach(function (c) { catLabel[c.key] = c.label; });
   var active = "all";
-
   var filtersEl = document.getElementById("filters");
+
   function renderFilters() {
     filtersEl.innerHTML = categories.map(function (c) {
       return '<button type="button" data-cat="' + c.key + '" aria-pressed="' + (c.key === active) + '">' + esc(c.label) + '</button>';
@@ -305,7 +345,6 @@
     var btn = e.target.closest("button[data-cat]");
     if (!btn) return;
     active = btn.getAttribute("data-cat");
-    renderFilters();
     renderEvents();
   });
 
@@ -318,19 +357,19 @@
   }
 
   function renderEvents() {
+    renderFilters();
     var el = document.getElementById("eventList");
-    var events = (D.events || []).slice().sort(byDate);
-    var recurring = D.recurring || [];
+    var events = (editions[selected].events || []).slice().sort(byDate).filter(keep);
+    var recurring = editions[selected].recurring || [];
     if (!events.length && !recurring.length) {
-      el.innerHTML = '<div class="empty"><p><strong>Local listings haven\'t been loaded yet.</strong></p>' +
+      el.innerHTML = '<div class="empty"><p><strong>Local listings haven\'t been loaded for this week.</strong></p>' +
         '<p>Set a city in <code>data.js</code> (the <code>city</code> field) and events for books, authors, arts, coffee, board games, quilting and cooking will appear here, including classes.</p></div>';
       return;
     }
     var shown = events.filter(function (ev) { return active === "all" || ev.category === active; });
     var ongoing = recurring.filter(function (r) { return active === "all" || r.category === active; });
 
-    var html = "";
-    html += '<h3 class="subhead">Dated this month and next</h3>';
+    var html = '<h3 class="subhead">Dated this month and next</h3>';
     html += shown.length ? '<div class="events">' + shown.map(function (ev) {
       return '<article class="event">' +
         '<div class="when">' + esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : '') + '</div>' +
@@ -338,7 +377,7 @@
         '<div class="meta">' + esc(ev.venue || "") + (ev.price ? ' · ' + esc(ev.price) : '') + '</div>' +
         (ev.note ? '<p class="note" style="margin:6px 0 0">' + esc(ev.note) + '</p>' : '') +
         tags(ev) + '</article>';
-    }).join("") + '</div>' : '<p class="note">No dated listings in this category yet.</p>';
+    }).join("") + '</div>' : '<p class="note">No dated listings in this category.</p>';
 
     html += '<h3 class="subhead">Ongoing groups and classes</h3>';
     html += ongoing.length ? '<div class="events">' + ongoing.map(function (r) {
@@ -348,17 +387,19 @@
         '<div class="meta">' + esc(r.venue || "") + '</div>' +
         (r.note ? '<p class="note" style="margin:6px 0 0">' + esc(r.note) + '</p>' : '') +
         tags(r) + '</article>';
-    }).join("") + '</div>' : '<p class="note">Nothing in this category yet.</p>';
+    }).join("") + '</div>' : '<p class="note">Nothing in this category.</p>';
 
     el.innerHTML = html;
   }
 
-  if (D.city) document.getElementById("cityLabel").textContent = D.city;
-  renderFilters();
-  renderEvents();
-
-  // Sources
-  document.getElementById("sourceList").textContent = (D.sources || []).join(" · ");
+  function renderAll() {
+    renderEditionFilters();
+    renderBookFilters();
+    renderBooks();
+    renderScreen();
+    renderEvents();
+  }
+  renderAll();
 
   // Theme toggle (remembered per viewer; optional)
   var root = document.documentElement;
@@ -368,8 +409,8 @@
   } catch (e) {}
   document.getElementById("themeToggle").addEventListener("click", function () {
     var dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    var current = root.getAttribute("data-theme") || (dark ? "dark" : "light");
-    var next = current === "dark" ? "light" : "dark";
+    var currentTheme = root.getAttribute("data-theme") || (dark ? "dark" : "light");
+    var next = currentTheme === "dark" ? "light" : "dark";
     root.setAttribute("data-theme", next);
     try { localStorage.setItem("shelf-theme", next); } catch (e) {}
   });

@@ -24,6 +24,7 @@ window.NEWSPAPER = {
   tagline: "Books, Screens & Local Oddities",
   city: "Columbus, Ohio",  // set to the city you want local events for, e.g. "Portland, OR"
   lastUpdated: "2026-11-25",
+  weekOf: "2026-11-23",  // Monday of the week this edition covers
 
   books: [
     // On your topics: arts, coffee, board games, quilting, books
@@ -230,6 +231,9 @@ window.NEWSPAPER = {
       url: "https://www.active.com/delaware-oh/board-games/classes/quilting-life-s-a-stitch-2026-110678037",
       note: "About 20 miles north of Columbus. Listed for ages 55 and up." }
   ],
+
+  // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
+  archive: [],
 
   sources: [
     "Netflix Tudum",
