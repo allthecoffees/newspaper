@@ -125,6 +125,7 @@
 
   <nav class="nav" aria-label="Sections">
     <a href="#books">Book releases</a>
+    <a href="#screen">On screen</a>
     <a href="#events">Local events</a>
     <a href="#sources">Sources</a>
     <button class="theme-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
@@ -135,8 +136,18 @@
       <h2>Upcoming Releases</h2>
       <span class="kicker">Sci-fi · Fantasy · Horror</span>
     </div>
-    <p class="dek">What's landing next, sorted by publication date. Dates come from listings and may change.</p>
+    <p class="dek">What's landing next, sorted by publication date.</p>
+    <div class="filters" id="bookFilters" role="group" aria-label="Filter books by genre"></div>
     <div class="genre-grid" id="bookGrid"></div>
+  </section>
+
+  <section id="screen">
+    <div class="section-head">
+      <h2>On Screen</h2>
+      <span class="kicker">Movies · TV · Documentaries</span>
+    </div>
+    <p class="dek">New or coming to streaming, connected to the books and topics above.</p>
+    <div class="events" id="screenList"></div>
   </section>
 
   <section id="events">
@@ -224,11 +235,45 @@
     ? '<div class="topic-block"><h3>On your topics</h3><div class="topic-grid">' + topicBooks.map(bookCard).join("") + '</div></div>'
     : "";
 
-  document.getElementById("bookGrid").innerHTML = topicHtml + genres.map(function (g) {
-    var list = books.filter(function (b) { return b.genre === g.key && upcoming(b); });
-    var items = list.length ? list.map(bookCard).join("") : '<p class="note">No upcoming titles listed yet.</p>';
-    return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
-  }).join("");
+  // Genre filter buttons, same style as the event filters
+  var bookGenreList = [{ key: "all", label: "All" }].concat(genres);
+  var activeBook = "all";
+  var bookFiltersEl = document.getElementById("bookFilters");
+  function renderBookFilters() {
+    bookFiltersEl.innerHTML = bookGenreList.map(function (g) {
+      return '<button type="button" data-genre="' + g.key + '" aria-pressed="' + (g.key === activeBook) + '">' + esc(g.label) + '</button>';
+    }).join("");
+  }
+  function renderBooks() {
+    var cols = genres.filter(function (g) { return activeBook === "all" || g.key === activeBook; });
+    var topic = activeBook === "all" ? topicHtml : "";
+    document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g) {
+      var list = books.filter(function (b) { return b.genre === g.key && upcoming(b); });
+      var items = list.length ? list.map(bookCard).join("") : '<p class="note">No upcoming titles listed yet.</p>';
+      return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
+    }).join("");
+  }
+  bookFiltersEl.addEventListener("click", function (e) {
+    var btn = e.target.closest("button[data-genre]");
+    if (!btn) return;
+    activeBook = btn.getAttribute("data-genre");
+    renderBookFilters();
+    renderBooks();
+  });
+  renderBookFilters();
+  renderBooks();
+
+  // On screen: movies, TV and documentaries
+  var screenItems = (D.screen || []).slice().sort(byDate).filter(upcoming);
+  document.getElementById("screenList").innerHTML = screenItems.length ? screenItems.map(function (s) {
+    return '<article class="event">' +
+      '<div class="when">' + esc(fmtDate(s.date)) + ' · ' + esc(s.type || "") + '</div>' +
+      '<h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a></h3>' +
+      (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
+      (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
+      '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + '</div>' +
+      '</article>';
+  }).join("") : '<div class="empty"><p>Nothing listed yet.</p></div>';
 
   // Events: category filters and list
   var categories = [

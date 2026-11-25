@@ -107,6 +107,20 @@ window.NEWSPAPER = {
       url: "https://www.hachette.co.uk/titles/christopher-mims/how-to-ai/9781035441051/" }
   ],
 
+  // On screen: new or coming to streaming, linked to the books and topics above.
+  screen: [
+    { title: "Pride and Prejudice", type: "TV series", date: "2026-12-03",
+      creator: "Written by Dolly Alderton. Directed by Euros Lyn.",
+      summary: "A six-part limited series adapting Jane Austen's novel. Emma Corrin plays Elizabeth Bennet and Jack Lowden plays Mr. Darcy. All episodes release at once.",
+      streaming: ["Netflix"],
+      url: "https://www.netflix.com/tudum/articles/pride-and-prejudice-photos-release-date-teaser-art" },
+    { title: "Jean-Michel Basquiat", type: "Documentary", date: "2026-12-11",
+      creator: "Directed by Quinn Whitney Wilson and Viridiana Lieberman.",
+      summary: "The first Basquiat documentary approved by the artist's estate. Runtime 95 minutes.",
+      streaming: ["Netflix"],
+      url: "https://www.netflix.com/tudum/articles/jean-michel-basquiat-release-date-news" }
+  ],
+
   // Dated events, festivals and talks.
   events: [
     { title: "Christkindlmarkt Dublin", date: "2026-11-21", time: "",
@@ -218,6 +232,7 @@ window.NEWSPAPER = {
   ],
 
   sources: [
+    "Netflix Tudum",
     "Penguin Random House",
     "Hachette UK",
     "Macmillan",
