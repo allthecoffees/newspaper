@@ -53,6 +53,11 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
     border-bottom: 1px solid var(--rule); }
   .sticky-head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+  .sticky-head .tagline, .sticky-head .wx { transition: max-height .2s ease; overflow: hidden; }
+  body.scrolled .sticky-head .tagline { max-height: 0; margin: 0; opacity: 0; }
+  body.scrolled .sticky-head .wx { max-height: 0; border-bottom: 0; }
+  body.scrolled .masthead { padding-bottom: 2px; border-bottom-width: 2px; }
+  body.scrolled .nav { padding: 6px 0; }
   .masthead { text-align: center; padding: 12px 0 6px; border-bottom: 4px double var(--rule); }
   .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(39px, 8.05vw, 74px);
     line-height: 1.05; margin: 0; letter-spacing: 0; }
@@ -472,6 +477,13 @@
       '<span class="wx-i" aria-hidden="true">' + w[2] + '</span>' +
       '<span class="wx-t">' + w[3] + '° <span>' + w[4] + '°</span></span></div>';
   }).join("");
+
+  // Slim the pinned header while scrolling: hide the tagline and weather row.
+  var scrolled = false;
+  window.addEventListener("scroll", function () {
+    var next = window.scrollY > 120;
+    if (next !== scrolled) { scrolled = next; document.body.classList.toggle("scrolled", next); }
+  }, { passive: true });
 
   // Theme toggle (remembered per viewer; optional)
   var root = document.documentElement;

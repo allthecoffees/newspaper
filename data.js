@@ -453,15 +453,7 @@ window.NEWSPAPER = {
       url: "https://technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere" },
     { title: "Columbus weekend picks: a reimagined Pirates of Penzance and a modern Hamlet", source: "Axios Columbus", date: "2026-11-06", topic: "arts",
       summary: "Weekend picks for Columbus theater, including a modern retelling of Hamlet at the Columbus Performing Arts Center.",
-      url: "https://www.axios.com/local/columbus/2026/11/06/weekend-events-things-to-do-maybe-happy-ending-cranksgiving" }
-  ],
-
-  // Where to check what is trending now (linked from the Streaming and Books sections).
-  trendingLinks: [
-    { label: "NYT Best Sellers", url: "https://www.nytimes.com/books/best-sellers/" },
-    { label: "Publishers Weekly bestsellers", url: "https://www.publishersweekly.com/pw/nielsen/HardcoverNonfiction.html" },
-    { label: "Netflix Top 10", url: "https://top10.netflix.com" },
-    { label: "Rotten Tomatoes popular movies", url: "https://editorial.rottentomatoes.com/guide/popular-movies/" },
+      url: "https://www.axios.com/local/columbus/2026/11/06/weekend-events-things-to-do-maybe-happy-ending-cranksgiving" },
     { title: "Middleman", source: "Kirkus Reviews", date: "2026-11-10", topic: "",
       summary: "Kirkus's review of Brendan Flaherty's darkly comic novel, which is about more than climate change.",
       url: "https://www.kirkusreviews.com/book-reviews/brendan-flaherty/middleman/" },
@@ -477,6 +469,15 @@ window.NEWSPAPER = {
     { title: "New science fiction and fantasy books to read in November 2026", source: "Book Riot", date: "2026-11", topic: "",
       summary: "Book Riot's monthly list of new sci-fi and fantasy titles.",
       url: "https://bookriot.com/science-fiction-and-fantasy-books-november-2026/" }
+  ],
+
+  // Where to check what is trending now (linked from the Streaming and Books sections).
+  trendingLinks: [
+    { label: "NYT Best Sellers", url: "https://www.nytimes.com/books/best-sellers/" },
+    { label: "Publishers Weekly bestsellers", url: "https://www.publishersweekly.com/pw/nielsen/HardcoverNonfiction.html" },
+    { label: "Netflix Top 10", url: "https://top10.netflix.com" },
+    { label: "Rotten Tomatoes popular movies", url: "https://editorial.rottentomatoes.com/guide/popular-movies/" }
+
   ],
 
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
