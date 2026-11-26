@@ -201,7 +201,23 @@ window.NEWSPAPER = {
     { title: "Monthly book club: The Most Wonderful Crime of the Year by Ally Carter", date: "2026-12-17", time: "6:30 PM",
       venue: "See listing (Eventbrite)", category: "books", type: "event",
       url: "https://www.eventbrite.com/e/read-and-discuss-the-most-wonderful-crime-of-the-year-by-ally-carter-tickets-1977293899280", price: "",
-      note: "A librarian-led book club. Check the listing for the format." }
+      note: "A librarian-led book club. Check the listing for the format." },
+    { title: "Beginner Abstract Painting in Acrylics", date: "2026-12-01", time: "6:00 PM to 9:00 PM",
+      venue: "McConnell Arts Center, 777 Evening St., Worthington", category: "arts", type: "class",
+      url: "https://www.active.com/worthington-oh/painting/classes/beginner-abstract-painting-in-acrylics-3-sessions-2026", price: "",
+      note: "Three weekly sessions, Dec 1 to 15. Registration had not opened when checked." },
+    { title: "Beginner Acrylic Painting", date: "2026-12-02", time: "7:00 PM to 9:00 PM",
+      venue: "McConnell Arts Center, 777 Evening St., Worthington", category: "arts", type: "class",
+      url: "https://www.active.com/worthington-oh/painting/classes/beginner-acrylic-painting-3-sessions-2026", price: "$70",
+      note: "Three weekly sessions, Dec 2 to 16." },
+    { title: "Exploring Mindfulness Through Art", date: "2026-12-02", time: "7:00 PM to 9:00 PM",
+      venue: "McConnell Arts Center, 777 Evening St., Worthington", category: "arts", type: "class",
+      url: "https://www.active.com/worthington-oh/classes/exploring-mindfulness-through-art-3-sessions-2026", price: "",
+      note: "Three weekly sessions, Dec 2 to 16." },
+    { title: "Beginner Drawing", date: "2026-12-03", time: "7:00 PM to 9:00 PM",
+      venue: "McConnell Arts Center, 777 Evening St., Worthington", category: "arts", type: "class",
+      url: "https://www.active.com/worthington-oh/arts-and-crafts/camp/beginner-drawing-3-sessions-2026", price: "",
+      note: "Three weekly sessions, Dec 3 to 17." }
   ],
 
   // Ongoing groups, classes, talk series and seasonal programs. Dates are not confirmed for December.
@@ -275,7 +291,11 @@ window.NEWSPAPER = {
     { title: "Quilting: Life's a Stitch", category: "quilting", type: "class",
       when: "October 8 to December 31, 2026", venue: "SourcePoint Enrichment Center, Delaware, Ohio",
       url: "https://www.active.com/delaware-oh/board-games/classes/quilting-life-s-a-stitch-2026-110678037",
-      note: "About 20 miles north of Columbus. Listed for ages 55 and up." }
+      note: "About 20 miles north of Columbus. Listed for ages 55 and up." },
+    { title: "Sew to Speak classes and events", category: "quilting", type: "class",
+      when: "Check the Classes and Events page", venue: "Sew to Speak, Columbus",
+      url: "https://ma.to/venue/sewtospeak",
+      note: "Fabric, yarn, and workshops in knitting, crochet, needlepoint and sewing. No December 2026 dates were posted when checked." }
   ],
 
   // Around the web: recent articles on the topics above.
@@ -343,6 +363,8 @@ window.NEWSPAPER = {
   archive: [],
 
   sources: [
+    { name: "Worthington Arts Council", url: "https://www.worthington.org" },
+    { name: "Sew to Speak", url: "https://ma.to/venue/sewtospeak" },
     { name: "Netflix Tudum", url: "https://www.netflix.com/tudum" },
     { name: "Penguin Random House", url: "https://www.penguinrandomhouse.com" },
     { name: "Hachette UK", url: "https://www.hachette.co.uk" },
