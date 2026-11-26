@@ -57,8 +57,9 @@
   .topline { font-family: var(--sans); font-size: 12px; text-transform: uppercase; letter-spacing: .08em;
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
     border-bottom: 1px solid var(--rule); }
-  .sticky-head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
-  .sticky-head .tagline, .sticky-head .wx { transition: max-height .2s ease; overflow: hidden; }
+  html { overflow-anchor: none; }
+  .sticky-head { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0 16px; }
+  #headSpacer { display: block; }
   body.scrolled .sticky-head .tagline { max-height: 0; margin: 0; opacity: 0; }
   body.scrolled .sticky-head .wx { max-height: 0; border-bottom: 0; }
   body.scrolled .masthead { padding-bottom: 2px; border-bottom-width: 2px; }
@@ -174,6 +175,7 @@
     <span id="updated"></span>
   </div>
 
+  <div id="headSpacer"></div>
   <div class="sticky-head">
   <header class="masthead">
     <h1 id="title">Strange and Unusual</h1>
@@ -517,12 +519,26 @@
       '<span class="wx-t">' + w[3] + '° <span>' + w[4] + '°</span></span></div>';
   }).join("");
 
-  // Slim the pinned header while scrolling: hide the tagline and weather row.
+  // Pinned header. It is fixed, so collapsing it does not move the page. A spacer keeps
+  // the page layout the same. Collapse and expand use different scroll points so the
+  // header does not flicker at the edge.
+  var headEl = document.querySelector(".sticky-head");
+  var spacerEl = document.getElementById("headSpacer");
+  function measureSpacer() {
+    var was = document.body.classList.contains("scrolled");
+    document.body.classList.remove("scrolled");
+    spacerEl.style.height = headEl.offsetHeight + "px";
+    if (was) document.body.classList.add("scrolled");
+  }
   var scrolled = false;
   window.addEventListener("scroll", function () {
-    var next = window.scrollY > 120;
-    if (next !== scrolled) { scrolled = next; document.body.classList.toggle("scrolled", next); }
+    var y = window.scrollY;
+    if (!scrolled && y > 150) { scrolled = true; document.body.classList.add("scrolled"); }
+    else if (scrolled && y < 60) { scrolled = false; document.body.classList.remove("scrolled"); }
   }, { passive: true });
+  measureSpacer();
+  window.addEventListener("load", measureSpacer);
+  window.addEventListener("resize", measureSpacer);
 
   // Theme toggle (remembered per viewer; optional)
   var root = document.documentElement;
