@@ -496,7 +496,22 @@ window.NEWSPAPER = {
       url: "https://lithub.com/vampiric-broodmothers-gig-economy-ghosts-and-medieval-abortionists-novembers-best-sci-fi-and-fantasy-books/" },
     { title: "New science fiction and fantasy books to read in November 2026", source: "Book Riot", date: "2026-11", topic: "",
       summary: "Book Riot's monthly list of new sci-fi and fantasy titles.",
-      url: "https://bookriot.com/science-fiction-and-fantasy-books-november-2026/" }
+      url: "https://bookriot.com/science-fiction-and-fantasy-books-november-2026/" },
+    { title: "J.R.R. Tolkien on Fairy Tales, Language, the Psychology of Fantasy, and Why There\u2019s No Such Thing as Writing \u201cFor Children\u201d", source: "The Marginalian", date: "2026-11-16", topic: "",
+      summary: "Tolkien on fairy stories, language and the psychology of fantasy.",
+      url: "https://www.themarginalian.org/2026/11/16/j-r-r-tolkien-on-fairy-stories/" },
+    { title: "Embrace Your Obsessions: Susan Orlean on the Antidote to the Meaninglessness of Life", source: "The Marginalian", date: "2026-11-14", topic: "",
+      summary: "Susan Orlean on obsession, drawn from The Orchid Thief.",
+      url: "https://www.themarginalian.org/2026/11/14/susan-orlean-orchid-thief/" },
+    { title: "The Relief of Rock Bottom: George Orwell and the Secret Springboard of Success", source: "The Marginalian", date: "2026-11-20", topic: "",
+      summary: "On George Orwell's Down and Out in Paris and London.",
+      url: "https://www.themarginalian.org/2026/11/20/rock-bottom/" },
+    { title: "How to Touch the Nothingness Behind Everything: Kahlil Gibran on the Seven Selves", source: "The Marginalian", date: "2026-11-24", topic: "",
+      summary: "Kahlil Gibran on the seven selves, drawn from The Madman.",
+      url: "https://www.themarginalian.org/2026/11/24/the-seven-selves-kahlil-gibran/" },
+    { title: "The Illustrated Version of \u201cAlice\u2019s Restaurant\u201d: Watch Arlo Guthrie\u2019s Thanksgiving Counterculture Classic", source: "Open Culture", date: "2026-11-26", topic: "",
+      summary: "An illustrated version of Arlo Guthrie's Thanksgiving song.",
+      url: "https://www.openculture.com/2026/11/alices-restaurant-watch-arlo-guthries-thanksgiving-counterculture-classic.html" }
   ],
 
   // Where to check what is trending now (linked from the Streaming and Books sections).
