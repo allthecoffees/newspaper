@@ -512,6 +512,10 @@ window.NEWSPAPER = {
   archive: [],
 
   sources: [
+    { name: "The Marginalian (formerly Brain Pickings)", url: "https://www.themarginalian.org" },
+    { name: "Open Culture", url: "https://www.openculture.com" },
+    { name: "Longreads", url: "https://longreads.com" },
+    { name: "Lapham's Quarterly", url: "https://www.laphamsquarterly.org" },
     { name: "Worthington Arts Council", url: "https://www.worthington.org" },
     { name: "Sew to Speak", url: "https://ma.to/venue/sewtospeak" },
     { name: "Netflix Tudum", url: "https://www.netflix.com/tudum" },
