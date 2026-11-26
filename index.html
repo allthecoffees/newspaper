@@ -346,7 +346,7 @@
       ? '<div class="topic-block"><h3>On your topics</h3><div class="topic-grid">' + topicBooks.map(bookCard).join("") + '</div></div>'
       : "";
     var cols = genres.filter(function (g) { return activeBook === "all" || g.key === activeBook; });
-    var topic = activeBook === "all" ? topicHtml : "";
+    var topic = "";
     var single = activeBook !== "all";
     document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g, i) {
       var list = books.filter(function (b) { return b.genre === g.key && keep(b); });
