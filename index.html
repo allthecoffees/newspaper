@@ -148,12 +148,13 @@
   details.dcard > summary .dtitle { display: block; font-family: var(--serif-head); font-size: 19px; margin: 4px 0; font-weight: 700; }
   details.dcard > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   details.dcard .dbody { margin-top: 8px; }
-  details.dcard > summary { padding-right: 96px; }
-  details.dcard > summary > .save-box { position: absolute; right: 30px; top: 8px; }
+  details.dcard > summary { padding-right: 28px; }
+  details.dcard > summary > .save-box { float: right; margin: 0 26px 6px 8px; }
   .savable { position: relative; }
   .save-box { display: inline-flex; align-items: center; gap: 4px; font-family: var(--sans); font-size: 12px; color: var(--muted); cursor: pointer; background: var(--card); padding: 2px 4px; }
   .save-box input { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; cursor: pointer; }
-  .savable > .save-box { position: absolute; top: 12px; right: 12px; }
+  .savable > .save-box { float: right; margin: 0 0 4px 8px; }
+  .savable > .title, details.dcard > summary > .dtitle { clear: right; }
   .empty p { margin: 0 0 8px; }
 
   footer { font-family: var(--sans); font-size: 13px; color: var(--muted); padding: 20px 0 36px; }
