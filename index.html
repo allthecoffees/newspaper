@@ -99,6 +99,17 @@
   .topic-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
   @media (min-width: 640px) { .topic-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
   .genre-grid h3 { font-family: var(--serif-head); font-size: 22px; margin: 0 0 10px; }
+  details.genre { border-bottom: 1px solid var(--rule); padding: 2px 0; }
+  details.genre > summary { cursor: pointer; list-style: none; font-family: var(--serif-head); font-size: 22px; font-weight: 700;
+    padding: 12px 28px 12px 0; position: relative; min-height: 44px; display: flex; align-items: center; }
+  details.genre > summary::-webkit-details-marker { display: none; }
+  details.genre > summary::after { content: "+"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%);
+    font-family: var(--sans); font-size: 22px; font-weight: 400; color: var(--accent); }
+  details.genre[open] > summary::after { content: "\2212"; }
+  details.genre > summary .count { font-family: var(--sans); font-size: 13px; font-weight: 400; color: var(--muted); margin-left: 6px; }
+  details.genre > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  details.genre .book:first-of-type { padding-top: 4px; }
+  @media (min-width: 640px) { details.genre { border-bottom: 0; } details.genre > summary { cursor: default; min-height: 0; padding-right: 0; } details.genre > summary::after { display: none; } details.genre > summary::-webkit-details-marker { display: none; } }
   .book { padding: 12px 0; border-bottom: 1px dotted var(--muted); }
   .book:last-child { border-bottom: 0; }
   .book .when { font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
@@ -331,10 +342,13 @@
       : "";
     var cols = genres.filter(function (g) { return activeBook === "all" || g.key === activeBook; });
     var topic = activeBook === "all" ? topicHtml : "";
-    document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g) {
+    var single = activeBook !== "all";
+    document.getElementById("bookGrid").innerHTML = topic + cols.map(function (g, i) {
       var list = books.filter(function (b) { return b.genre === g.key && keep(b); });
       var items = list.length ? list.map(bookCard).join("") : '<p class="note">No titles listed for this week.</p>';
-      return '<div><h3>' + esc(g.label) + '</h3>' + items + '</div>';
+      var open = (single || i === 0) ? ' open' : '';
+      return '<details class="genre"' + open + '><summary>' + esc(g.label) +
+        ' <span class="count">(' + list.length + ')</span></summary>' + items + '</details>';
     }).join("");
   }
 
