@@ -54,7 +54,7 @@
     border-bottom: 1px solid var(--rule); }
   .sticky-head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
   .masthead { text-align: center; padding: 12px 0 6px; border-bottom: 4px double var(--rule); }
-  .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(34px, 7vw, 64px);
+  .masthead h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(39px, 8.05vw, 74px);
     line-height: 1.05; margin: 0; letter-spacing: 0; }
   .tagline { font-style: italic; color: var(--muted); margin: 8px 0 0; }
   .nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; font-family: var(--sans);
@@ -63,6 +63,17 @@
     border: 1px solid var(--rule); color: var(--ink); padding: 4px 12px; cursor: pointer; text-decoration: none;
     display: inline-block; }
   .nav-btn:hover, .nav-btn:focus-visible { background: var(--ink); color: var(--paper); }
+
+  /* Weather band */
+  .wx { display: flex; gap: 0; overflow-x: auto; border-bottom: 1px solid var(--rule); font-family: var(--sans); }
+  .wx-day { flex: 1 0 64px; text-align: center; padding: 6px 4px; border-right: 1px dotted var(--muted); display: flex; flex-direction: column; align-items: center; gap: 1px; }
+  .wx-day:last-child { border-right: 0; }
+  .wx-day.today { background: var(--tag-bg); }
+  .wx-d { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); }
+  .wx-i { font-size: 20px; line-height: 1.2; }
+  .wx-t { font-size: 13px; font-weight: 600; }
+  .wx-t span { color: var(--muted); font-weight: 400; }
+  .wx-p { font-size: 11px; color: var(--muted); }
 
   /* Edition selector */
   .editions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; align-items: center; padding: 12px 0;
@@ -132,6 +143,8 @@
     <h1 id="title">Strange and Unusual</h1>
     <p class="tagline" id="tagline"></p>
   </header>
+
+  <div class="wx" id="weather" role="group" aria-label="Weather forecast for Columbus, Ohio"></div>
 
   <nav class="nav" aria-label="Sections">
     <a class="nav-btn" href="#books">Book releases</a>
@@ -436,6 +449,23 @@
     renderEvents();
   }
   renderAll();
+
+  // Weather band: seven days, Columbus OH (forecast saved Nov 26, 2026; update by hand)
+  var WX = [
+    ["Thu", "26", "🌧️", 45, 39, 100, "Rain"],
+    ["Fri", "27", "🌦️", 43, 33, 55, "Showers"],
+    ["Sat", "28", "⛅", 48, 37, 5, "Clouds, then sun"],
+    ["Sun", "29", "🌧️", 51, 39, 90, "Rain"],
+    ["Mon", "30", "🌤️", 44, 28, 5, "Partly sunny"],
+    ["Tue", "1", "☁️", 46, 34, 14, "Mostly cloudy"],
+    ["Wed", "2", "🌤️", 53, 42, 14, "Partly sunny"]
+  ];
+  document.getElementById("weather").innerHTML = WX.map(function (w, i) {
+    return '<div class="wx-day' + (i === 0 ? ' today' : '') + '" title="' + esc(w[6]) + '">' +
+      '<span class="wx-d">' + esc(w[0]) + ' ' + esc(w[1]) + '</span>' +
+      '<span class="wx-i" aria-hidden="true">' + w[2] + '</span>' +
+      '<span class="wx-t">' + w[3] + '° <span>' + w[4] + '°</span></span></div>';
+  }).join("");
 
   // Theme toggle (remembered per viewer; optional)
   var root = document.documentElement;
