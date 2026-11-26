@@ -140,6 +140,14 @@
   .subhead { font-family: var(--serif-head); font-size: 20px; margin: 22px 0 10px; font-weight: 700; }
   .subhead:first-child { margin-top: 0; }
   .empty { border: 1px dashed var(--rule); padding: 18px; background: var(--card); }
+  details.dcard > summary { list-style: none; cursor: pointer; position: relative; padding-right: 28px; min-height: 44px; }
+  details.dcard > summary::-webkit-details-marker { display: none; }
+  details.dcard > summary::after { content: "+"; position: absolute; right: 2px; top: 0; font-family: var(--sans); font-size: 22px; color: var(--accent); }
+  details.dcard[open] > summary::after { content: "\2212"; }
+  details.dcard > summary .when { display: block; }
+  details.dcard > summary .dtitle { display: block; font-family: var(--serif-head); font-size: 19px; margin: 4px 0; font-weight: 700; }
+  details.dcard > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  details.dcard .dbody { margin-top: 8px; }
   .empty p { margin: 0 0 8px; }
 
   footer { font-family: var(--sans); font-size: 13px; color: var(--muted); padding: 20px 0 36px; }
@@ -357,17 +365,21 @@
     }).join("");
   }
 
+  // Collapsible card: the title and date show; tap to open the details.
+  function dcard(whenHtml, titleText, bodyHtml) {
+    return '<details class="event dcard"><summary><span class="when">' + whenHtml + '</span>' +
+      '<span class="dtitle">' + esc(titleText) + '</span></summary><div class="dbody">' + bodyHtml + '</div></details>';
+  }
+
   // On screen
   function renderScreen() {
     var items = (editions[selected].screen || []).slice().sort(byDate).filter(keep);
     document.getElementById("screenList").innerHTML = items.length ? items.map(function (s) {
-      return '<article class="event">' +
-        '<div class="when">' + esc(fmtDate(s.date)) + ' · ' + esc(s.type || "") + '</div>' +
-        '<h3><a href="' + esc(s.url) + '" target="_blank" rel="noopener">' + esc(s.title) + '</a></h3>' +
-        (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
+      var body = (s.creator ? '<div class="meta">' + esc(s.creator) + '</div>' : '') +
         (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
         '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + (s.guide ? ' · Link is to a third-party guide' : '') + '</div>' +
-        '</article>';
+        '<p style="margin:8px 0 0"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">Open the link →</a></p>';
+      return dcard(esc(fmtDate(s.date)) + ' · ' + esc(s.type || ""), s.title, body);
     }).join("") : '<div class="empty"><p>Nothing listed for this week.</p></div>';
   }
 
@@ -438,22 +450,20 @@
 
     var html = '<h3 class="subhead">Dated this month and next</h3>';
     html += shown.length ? '<div class="events">' + shown.map(function (ev) {
-      return '<article class="event">' +
-        '<div class="when">' + esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : '') + '</div>' +
-        '<h3>' + titleOf(ev) + '</h3>' +
-        '<div class="meta">' + esc(ev.venue || "") + (ev.price ? ' · ' + esc(ev.price) : '') + '</div>' +
+      var body = '<div class="meta">' + esc(ev.venue || "") + (ev.price ? ' · ' + esc(ev.price) : '') + '</div>' +
         (ev.note ? '<p class="note" style="margin:6px 0 0">' + esc(ev.note) + '</p>' : '') +
-        tags(ev) + '</article>';
+        tags(ev) +
+        (ev.url ? '<p style="margin:8px 0 0"><a href="' + esc(ev.url) + '" target="_blank" rel="noopener">Open the link →</a></p>' : '');
+      return dcard(esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : ''), ev.title, body);
     }).join("") + '</div>' : '<p class="note">No dated listings in this category.</p>';
 
     html += '<h3 class="subhead">Ongoing groups and classes</h3>';
     html += ongoing.length ? '<div class="events">' + ongoing.map(function (r) {
-      return '<article class="event">' +
-        '<div class="when">' + esc(r.when || "") + '</div>' +
-        '<h3>' + titleOf(r) + '</h3>' +
-        '<div class="meta">' + esc(r.venue || "") + '</div>' +
+      var body = '<div class="meta">' + esc(r.venue || "") + '</div>' +
         (r.note ? '<p class="note" style="margin:6px 0 0">' + esc(r.note) + '</p>' : '') +
-        tags(r) + '</article>';
+        tags(r) +
+        (r.url ? '<p style="margin:8px 0 0"><a href="' + esc(r.url) + '" target="_blank" rel="noopener">Open the link →</a></p>' : '');
+      return dcard(esc(r.when || ""), r.title, body);
     }).join("") + '</div>' : '<p class="note">Nothing in this category.</p>';
 
     el.innerHTML = html;
