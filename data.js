@@ -24,7 +24,7 @@ window.NEWSPAPER = {
   tagline: "Books, Screens, Local and Online Oddities",
   city: "Columbus, Ohio",  // set to the city you want local events for, e.g. "Portland, OR"
   lastUpdated: "2026-11-25",
-  weekOf: "2026-11-23",  // Monday of the week this edition covers
+  weekOf: "2026-11-30",  // Monday of the week this edition covers
 
   books: [
     // On your topics: arts, coffee, board games, quilting, books
@@ -475,7 +475,7 @@ window.NEWSPAPER = {
       url: "https://aeon.co/essays/a-new-answer-to-why-there-is-something-rather-than-nothing" },
     { title: "Those forced to cross borders are imagining a radical new world", source: "Aeon", date: "2026-11-13", topic: "",
       summary: "On how people crossing borders imagine the future, and what that says about freedom.",
-      url: "https://aeon.co/essays/those-forced-to-cross-borders-are-imagining-a-radical-new-world" },,
+      url: "https://aeon.co/essays/those-forced-to-cross-borders-are-imagining-a-radical-new-world" },
     { title: "AI is everywhere", source: "MIT Technology Review", date: "2026-11-18", topic: "technology",
       summary: "From MIT Technology Review's AI Hype Index column.",
       url: "https://technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere" },
@@ -524,7 +524,1173 @@ window.NEWSPAPER = {
   ],
 
   // Past weekly editions, added by the weekly update: { weekOf, books, screen, events, recurring }.
-  archive: [],
+  archive: [
+    {
+      "weekOf": "2026-11-23",
+      "books": [
+        {
+          "title": "Opening Night: A Story of Art and Friendship",
+          "genre": "nonfiction",
+          "topic": "arts",
+          "date": "2026-12-01",
+          "summary": "A story of art and friendship.",
+          "url": "https://www.rizzolibookstore.com/product/opening-night-story-art-and-friendship"
+        },
+        {
+          "title": "Cygnus",
+          "author": "Marko Kloos",
+          "genre": "scifi",
+          "date": "2026-12-08",
+          "summary": "Military science fiction and the third book in the Frontlines: Evolution series.",
+          "url": "https://www.risingshadow.net/upcoming-book-releases?genre=30"
+        },
+        {
+          "title": "Daughters of the Wind",
+          "author": "Sheila Williams",
+          "genre": "fantasy",
+          "date": "2026-12-01",
+          "summary": "Mythic fantasy in which Aeola gathers the Daughters of the Wind across eras.",
+          "url": "https://www.netgalley.com/catalog/book/922688"
+        },
+        {
+          "title": "The Fires of December",
+          "author": "Brandon Sanderson",
+          "genre": "fantasy",
+          "date": "2026-12-08",
+          "summary": "A standalone Cosmere novel about a plague.",
+          "url": "https://www.hachette.co.uk/titles/brandon-sanderson/the-fires-of-december/9781399640893/?lens=gollancz"
+        },
+        {
+          "title": "Call Me Traitor",
+          "author": "Everina Maxwell",
+          "genre": "fantasy",
+          "date": "2026-12-01",
+          "summary": "A soldier bound by magic must work with a man who may be one of the exiled traitors she was sent to find.",
+          "url": "https://www.hachette.co.uk/titles/everina-maxwell-2/call-me-traitor/9780356531571/"
+        },
+        {
+          "title": "Til Quest Do Us Part",
+          "author": "Ivelisse Housman",
+          "genre": "fantasy",
+          "date": "2026-12-01",
+          "summary": "A queen must break her vow to her knight for the greater good.",
+          "url": "https://penguinrandomhouse.com/books/819897/til-quest-do-us-part-by-ivelisse-housman"
+        },
+        {
+          "title": "Kenna of Blood House",
+          "author": "Sarah Hawley",
+          "genre": "fantasy",
+          "date": "2026-12-08",
+          "summary": "Princess Kenna chooses which rival prince to back for Mistei's throne.",
+          "url": "https://www.penguinrandomhouse.com/series/GIC/the-shards-of-magic/"
+        },
+        {
+          "title": "A Court of Forgotten Melody",
+          "author": "Sarah J. Maas",
+          "genre": "fantasy",
+          "date": "2027-01-12",
+          "summary": "The final A Court of Thorns and Roses book.",
+          "url": "https://www.indigo.ca/en-ca/a-court-of-thorns-and-roses-7/9798260200568.html"
+        },
+        {
+          "title": "A Song of Sugar Sparrows",
+          "author": "Seanan McGuire",
+          "genre": "fantasy",
+          "date": "2027-01-12",
+          "summary": "An origin story for Sumi, a fan-favorite character.",
+          "url": "https://www.risingshadow.net/book/79807-a-song-of-sugar-sparrows"
+        },
+        {
+          "title": "Emily Wilde's History of Dark Faerie",
+          "author": "Heather Fawcett",
+          "genre": "fantasy",
+          "date": "2027-01-19",
+          "summary": "Emily searches for a missing friend in the Black Forest and uncovers the history of Dark Faerie.",
+          "url": "https://www.penguinrandomhouse.com/books/770051/emily-wildes-history-of-dark-faerie-by-heather-fawcett"
+        },
+        {
+          "title": "The Magical Cheese Emporium",
+          "author": "Sarah Beth Durst",
+          "genre": "fantasy",
+          "date": "2027-01-19",
+          "summary": "Eloren returns to her grandmother's shop and defends local businesses against impossible taxes.",
+          "url": "https://us.macmillan.com/books/9781250400710/themagicalcheeseemporium/"
+        },
+        {
+          "title": "Firstdawn",
+          "author": "Lana Harper",
+          "genre": "fantasy",
+          "date": "2027-01-19",
+          "summary": "A Chicago investigator learns her blood links her to Lilith's infernal empire.",
+          "url": "https://penguinrandomhouse.com/books/788254/firstdawn-by-lana-harper"
+        },
+        {
+          "title": "Exhumation",
+          "author": "Nicholas Binge",
+          "genre": "horror",
+          "date": "2026-12-01",
+          "summary": "A London investigator is told to find a woman murdered months earlier.",
+          "url": "https://www.penguinrandomhouse.com/books/804814/exhumation-by-nicholas-binge/9798217352913"
+        },
+        {
+          "title": "A Killing in Souls",
+          "author": "Andy Dudak",
+          "genre": "horror",
+          "date": "2026-12-01",
+          "summary": "A monk investigates people turned into dreaming statues.",
+          "url": "https://darkmattermagazine.shop/pages/dark-matter-ink"
+        },
+        {
+          "title": "Possession Island",
+          "author": "Sarah McCarry",
+          "genre": "horror",
+          "date": "2026-12-01",
+          "summary": "A queer gothic thriller about a murder tied to a vampire novel.",
+          "url": "https://www.bookishelf.com/book/possession-island-sarah-mccarry/"
+        },
+        {
+          "title": "There Are No Giant Crabs in This Novel",
+          "author": "Jason Pargin",
+          "genre": "horror",
+          "date": "2026-12-01",
+          "summary": "A cosmic horror comedy and the fifth John Dies at the End book.",
+          "url": "https://mitpressbookstore.mit.edu/book/9781250285973"
+        },
+        {
+          "title": "Domain of Darkness",
+          "author": "Marisa Linton",
+          "genre": "horror",
+          "date": "2026-12-03",
+          "summary": "London, December 1904: Evie Winstanley investigates deaths among Ghost Club members.",
+          "url": "https://www.hachette.co.uk/titles/marisa-linton/domain-of-darkness/9781399740234/"
+        },
+        {
+          "title": "Murder by Malmsey",
+          "author": "Irina Shapiro",
+          "genre": "mystery",
+          "date": "2027-01-04",
+          "summary": "Redmond and Haze must decode a killer's message before another death.",
+          "url": "https://www.risingshadow.net/book/86816-murder-by-malmsey"
+        },
+        {
+          "title": "The Last Kings of Hollywood",
+          "author": "Paul Fischer",
+          "genre": "film",
+          "date": "2027-02-02",
+          "summary": "Coppola, Lucas and Spielberg and the fight for American cinema.",
+          "url": "https://www.indigo.ca/products/the-last-kings-of-hollywood-coppola-lucas-spielberg-and-the-battle-for-the-soul-of-american-cinema-1"
+        },
+        {
+          "title": "The Intelligence Explosion: When AI Beats Humans at Everything",
+          "author": "James Barrat",
+          "genre": "technology",
+          "date": "2026-12-01",
+          "summary": "Could AI improve itself until it outpaces human intelligence and slips out of control?",
+          "url": "https://www.target.com/p/the-intelligence-explosion-by-james-barrat/-/A-95134432"
+        },
+        {
+          "title": "The Human-Machine Company",
+          "author": "Lak Ananth with Kevin Maney",
+          "genre": "technology",
+          "date": "2026-12-01",
+          "summary": "How businesses can be rebuilt around AI.",
+          "url": "https://www.webull.com/news/15701184535151616"
+        },
+        {
+          "title": "How to AI",
+          "author": "Christopher Mims",
+          "genre": "technology",
+          "date": "2027-01-14",
+          "summary": "",
+          "url": "https://www.hachette.co.uk/titles/christopher-mims/how-to-ai/9781035441051/"
+        },
+        {
+          "title": "Dungeon Crawler Carl",
+          "author": "Matt Dinniman",
+          "genre": "scifi",
+          "date": "",
+          "trending": true,
+          "summary": "Matt Dinniman's LitRPG series, on a recent weekly bestseller roundup.",
+          "url": "https://bookriot.com/bestselling-books-of-the-week-november-12-2026/"
+        },
+        {
+          "title": "The Hollow",
+          "author": "Michael Connelly",
+          "genre": "mystery",
+          "date": "",
+          "trending": true,
+          "summary": "Michael Connelly's new novel, on a recent weekly bestseller roundup.",
+          "url": "https://bookriot.com/bestselling-books-november-19-2026/"
+        }
+      ],
+      "screen": [
+        {
+          "title": "Pride and Prejudice",
+          "type": "TV series",
+          "date": "2026-12-03",
+          "creator": "Written by Dolly Alderton. Directed by Euros Lyn.",
+          "summary": "A six-part limited series adapting Jane Austen's novel. Emma Corrin plays Elizabeth Bennet and Jack Lowden plays Mr. Darcy. All episodes release at once.",
+          "streaming": [
+            "Netflix"
+          ],
+          "url": "https://www.netflix.com/tudum/articles/pride-and-prejudice-photos-release-date-teaser-art"
+        },
+        {
+          "title": "Jean-Michel Basquiat",
+          "type": "Documentary",
+          "date": "2026-12-11",
+          "creator": "Directed by Quinn Whitney Wilson and Viridiana Lieberman.",
+          "summary": "The first Basquiat documentary approved by the artist's estate. Runtime 95 minutes.",
+          "streaming": [
+            "Netflix"
+          ],
+          "url": "https://www.netflix.com/tudum/articles/jean-michel-basquiat-release-date-news"
+        },
+        {
+          "title": "Criterion Channel December 2026 lineup",
+          "type": "Streaming collection",
+          "date": "2026-12-01",
+          "creator": "Criterion Channel",
+          "summary": "A Christmas Crime collection and a set of golden-age Hollywood holiday films.",
+          "streaming": [
+            "Criterion Channel"
+          ],
+          "url": "https://www.criterion.com/current/posts/9345-the-criterion-channel-s-december-2026-lineup"
+        },
+        {
+          "title": "Harry Potter (HBO series)",
+          "type": "TV series",
+          "date": "2026-12-25",
+          "creator": "Based on the Harry Potter novels by J.K. Rowling.",
+          "summary": "HBO's series adaptation of the Harry Potter books. Reported for December 25 by a third-party guide; HBO has not confirmed the date.",
+          "streaming": [
+            "HBO Max"
+          ],
+          "guide": true,
+          "url": "https://www.sortiraparis.com/en/what-to-do-in-paris/cinema-series/guides/321902-hbo-max-december-2026-releases"
+        }
+      ],
+      "events": [
+        {
+          "title": "Christkindlmarkt Dublin",
+          "date": "2026-11-21",
+          "time": "",
+          "venue": "Riverside Crossing Park, Dublin, Ohio",
+          "category": "festivals",
+          "type": "event",
+          "url": "https://dublinohiousa.gov/calendar-events/christkindlmarkt/",
+          "price": "Free",
+          "note": "German-style holiday market open through Thursday, December 24. Food, glühwein, artisan vendors and live entertainment."
+        },
+        {
+          "title": "Village Lights Holiday Market",
+          "date": "2026-12-06",
+          "time": "3:00 PM to 8:00 PM",
+          "venue": "German Village, Columbus",
+          "category": "festivals",
+          "type": "event",
+          "url": "https://german.germanvillage.com/events/details/village-lights-1363945",
+          "price": "Free",
+          "note": "Neighborhood holiday celebration with a maker market. Sources disagree on the market's hours and maker count."
+        },
+        {
+          "title": "Columbus Winterfair",
+          "date": "2026-12-04",
+          "time": "",
+          "venue": "Ohio Expo Center, Columbus",
+          "category": "festivals",
+          "type": "event",
+          "url": "https://winterfair.org",
+          "price": "About $5 to $8",
+          "note": "Artists fair with a gourmet marketplace, run by Ohio Designer Craftsmen. Most listings say Dec 4 to 6; one says Dec 5 to 7."
+        },
+        {
+          "title": "A Century After Nanook film screening and Q&A",
+          "date": "2026-12-02",
+          "time": "7:00 PM",
+          "venue": "Wexner Center for the Arts, Columbus",
+          "category": "film",
+          "type": "talk",
+          "url": "https://history.osu.edu/events/century-after-nanook-film-screening",
+          "price": "",
+          "note": "Screening with a moderated Q&A with director Dr. Kirk French and a collaborator from Inukjuak. Open to the public."
+        },
+        {
+          "title": "Coffee with a Cause",
+          "date": "2026-12-09",
+          "time": "Morning",
+          "venue": "Central Ohio (see listing)",
+          "category": "coffee",
+          "type": "talk",
+          "url": "https://luma.com/cwac-1226",
+          "price": "",
+          "note": "Monthly community conversation over coffee. The December edition looks at community impact in 2026. It is not a brewing class."
+        },
+        {
+          "title": "Not Your Mama's Final Chance Holiday Craft Market",
+          "date": "2026-12-13",
+          "time": "",
+          "venue": "345 E 2nd Ave, Short North, Columbus",
+          "category": "festivals",
+          "type": "event",
+          "url": "https://www.thecraftmap.com/fair/not-your-mamas-final-chance-holiday-craft-market-short-north-columbus-columbus-oh",
+          "price": "",
+          "note": "Handmade craft market in the Short North."
+        },
+        {
+          "title": "Clintonville Holiday Market",
+          "date": "2026-12-12",
+          "time": "9:00 AM to 1:00 PM",
+          "venue": "Clintonville, Columbus",
+          "category": "festivals",
+          "type": "event",
+          "url": "https://marketspread.com/market/39634/winter-market/",
+          "price": "",
+          "note": "Indoor market with farm food and local crafts. One listing says Dec 12, another says Dec 19. Confirm with the organizer."
+        },
+        {
+          "title": "Creamy Cajun Fettuccine Pasta Making Class",
+          "date": "2026-12-03",
+          "time": "6:00 PM",
+          "venue": "ClassBento, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://classbento.com/creamy-cajun-fettuccine-pasta-making-class-columbus",
+          "price": "$60",
+          "note": "Two-hour beginner class."
+        },
+        {
+          "title": "Cathedral Window quilting workshop (Yeoujimunbo)",
+          "date": "2026-12-04",
+          "time": "12:00 PM to 2:30 PM ET",
+          "venue": "Online (Zoom)",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://tatter.org/events/yeouijumun-quilting/",
+          "price": "$75",
+          "note": "Taught by Youngmin Lee over Zoom. A recording is included."
+        },
+        {
+          "title": "Trapunto quilting workshop with Sarah Nishiura",
+          "date": "2026-12-11",
+          "time": "12:00 PM to 2:30 PM ET",
+          "venue": "Online (Zoom)",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://shop.tatter.org/products/trapunto",
+          "price": "",
+          "note": "A stuffing-and-cording technique that uses common materials and tools."
+        },
+        {
+          "title": "Quilting 101 (virtual course)",
+          "date": "2026-12-03",
+          "time": "6:30 PM to 8:30 PM",
+          "venue": "Online, Legacy Crafts (Austin, TX)",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://www.austintexas.gov/carver/events/legacy-crafts-quilting-101",
+          "price": "",
+          "note": "Taught by Suzzette Boston. Meets December 3, 10 and 17 as part of a series."
+        },
+        {
+          "title": "Online Bûche de Noël class (Sur La Table)",
+          "date": "2026-12-05",
+          "time": "11:00 AM ET",
+          "venue": "Online (Zoom)",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.surlatable.com/online-prep-now-eat-later-buche-de-noel-eastern-time/10872125.html",
+          "price": "$39 per household",
+          "note": "Make a holiday bûche de Noël at home with a live instructor."
+        },
+        {
+          "title": "Online Winter Cookie Workshop (Sur La Table)",
+          "date": "2026-12-19",
+          "time": "11:00 AM ET",
+          "venue": "Online (Zoom)",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.surlatable.com/online-winter-cookie-workshop-eastern-time/10869337.html",
+          "price": "$39 per household",
+          "note": "Make three batches of Christmas cookies with a live instructor."
+        },
+        {
+          "title": "Behind The Pages: author chat with Renee Swindle",
+          "date": "2026-12-03",
+          "time": "8:00 PM ET",
+          "venue": "Online",
+          "category": "books",
+          "type": "talk",
+          "url": "https://www.eventbrite.com/e/btp-behind-the-pages-author-chat-with-renee-swindle-tickets-1772614370299",
+          "price": "",
+          "note": "An online author chat on Eventbrite."
+        },
+        {
+          "title": "Monthly book club: The Most Wonderful Crime of the Year by Ally Carter",
+          "date": "2026-12-17",
+          "time": "6:30 PM",
+          "venue": "See listing (Eventbrite)",
+          "category": "books",
+          "type": "event",
+          "url": "https://www.eventbrite.com/e/read-and-discuss-the-most-wonderful-crime-of-the-year-by-ally-carter-tickets-1977293899280",
+          "price": "",
+          "note": "A librarian-led book club. Check the listing for the format."
+        },
+        {
+          "title": "Beginner Abstract Painting in Acrylics",
+          "date": "2026-12-01",
+          "time": "6:00 PM to 9:00 PM",
+          "venue": "McConnell Arts Center, 777 Evening St., Worthington",
+          "category": "arts",
+          "type": "class",
+          "url": "https://www.active.com/worthington-oh/painting/classes/beginner-abstract-painting-in-acrylics-3-sessions-2026",
+          "price": "",
+          "note": "Three weekly sessions, Dec 1 to 15. Registration had not opened when checked."
+        },
+        {
+          "title": "Beginner Acrylic Painting",
+          "date": "2026-12-02",
+          "time": "7:00 PM to 9:00 PM",
+          "venue": "McConnell Arts Center, 777 Evening St., Worthington",
+          "category": "arts",
+          "type": "class",
+          "url": "https://www.active.com/worthington-oh/painting/classes/beginner-acrylic-painting-3-sessions-2026",
+          "price": "$70",
+          "note": "Three weekly sessions, Dec 2 to 16."
+        },
+        {
+          "title": "Exploring Mindfulness Through Art",
+          "date": "2026-12-02",
+          "time": "7:00 PM to 9:00 PM",
+          "venue": "McConnell Arts Center, 777 Evening St., Worthington",
+          "category": "arts",
+          "type": "class",
+          "url": "https://www.active.com/worthington-oh/classes/exploring-mindfulness-through-art-3-sessions-2026",
+          "price": "",
+          "note": "Three weekly sessions, Dec 2 to 16."
+        },
+        {
+          "title": "Beginner Drawing",
+          "date": "2026-12-03",
+          "time": "7:00 PM to 9:00 PM",
+          "venue": "McConnell Arts Center, 777 Evening St., Worthington",
+          "category": "arts",
+          "type": "class",
+          "url": "https://www.active.com/worthington-oh/arts-and-crafts/camp/beginner-drawing-3-sessions-2026",
+          "price": "",
+          "note": "Three weekly sessions, Dec 3 to 17."
+        },
+        {
+          "title": "Taste of Sewing: Make a Tea Towel",
+          "date": "2026-12-15",
+          "time": "3:00 PM to 4:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/taste-of-sewing-make-a-tea-towel-w-caitlin",
+          "price": "$35",
+          "note": "Listed for: TUES., December 15, 3-4pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Taste of Sewing: Make a Tea Towel",
+          "date": "2026-12-15",
+          "time": "4:00 PM to 5:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/taste-of-sewing-make-a-tea-towel-w-caitlin",
+          "price": "$35",
+          "note": "Listed for: TUES., December 15, 4-5pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Taste of Sewing: Make a Tea Towel",
+          "date": "2026-12-15",
+          "time": "5:00 PM to 6:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/taste-of-sewing-make-a-tea-towel-w-caitlin",
+          "price": "$35",
+          "note": "Listed for: TUES., December 15, 5-6pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Crochet 101: Spa Towel",
+          "date": "2026-12-03",
+          "time": "6:00 PM to 8:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/crochet-101-spa-towel-with-madison-or-melissa",
+          "price": "$90",
+          "note": "Listed for: Thursday, December 3 and 10, 6:00-8:00pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Kids Sewing: Pencil Pouch",
+          "date": "2026-12-05",
+          "time": "9:30 AM to 12:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/kids-sewing-pencil-pouch-w-caitlin",
+          "price": "$75",
+          "note": "Listed for: SAT., December 5, 9:30-12pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Quilted Holiday Table Runner",
+          "date": "2026-12-06",
+          "time": "10:00 AM to 12:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/quilted-holiday-table-runner-w-allison",
+          "price": "$105",
+          "note": "Listed for: SUN., December 6 & 13, 10am-12:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Introduction to Sashiko",
+          "date": "2026-12-20",
+          "time": "10:00 AM to 12:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/introduction-to-sashiko-w-mary-lee",
+          "price": "$90",
+          "note": "Listed for: SUN., December 20 & 27, 10am-12pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Embroidery for Kids and Teens",
+          "date": "2026-12-21",
+          "time": "3:00 PM to 5:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/embroidery-for-kids-w-erin",
+          "price": "$65",
+          "note": "Listed for: Kids and Teens (Ages 8-18) - MON, December 21, 3-5pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Garment School",
+          "date": "2026-12-21",
+          "time": "12:00 PM to 2:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/garment-school-w-caitlin",
+          "price": "$230",
+          "note": "Listed for: MON, December 21, TUES, December 22, MON December 28, TUES December 29, 12-2:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing School",
+          "date": "2026-12-29",
+          "time": "8:00 AM to 11:00 AM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-school-w-caitlin",
+          "price": "$250",
+          "note": "Listed for: TUES., WED., & THURS., December 29, 30, & 31 8-11am. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing Skill Building 5",
+          "date": "2026-12-29",
+          "time": "6:00 PM to 9:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-skill-building-5-w-haley-fullness-contours",
+          "price": "$90",
+          "note": "Listed for: TUES., December 29, 6-9pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing 101",
+          "date": "2027-01-14",
+          "time": "10:30 AM to 12:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-101-envelope-pillow",
+          "price": "$60",
+          "note": "Listed for: THURS., January 14, 10:30am- 12:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing 101",
+          "date": "2027-01-26",
+          "time": "10:30 AM to 12:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-101-envelope-pillow",
+          "price": "$60",
+          "note": "Listed for: TUES., January 26, 10:30am-12:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing Skill Building 2",
+          "date": "2027-01-05",
+          "time": "6:00 PM to 9:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-skill-building-2-closures",
+          "price": "$90",
+          "note": "Listed for: TUES., January 5 & 12, 6-9pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Sewing School",
+          "date": "2027-01-06",
+          "time": "6:00 PM to 8:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/sewing-school-w-caitlin",
+          "price": "$250",
+          "note": "Listed for: WED., January 6, 13, 20 & 27, 6-8:30pm. Full as of the shop's listing."
+        },
+        {
+          "title": "Intro to Foundation Paper Piecing",
+          "date": "2027-01-11",
+          "time": "6:00 PM to 8:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/intro-to-fpp-w-mallory-tall-tales-quilt-block",
+          "price": "$65",
+          "note": "Listed for: MON., January 11, 6-8pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Quilted Table Runner",
+          "date": "2027-01-10",
+          "time": "2:00 PM to 4:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/quilted-table-runner-w-allison",
+          "price": "$105",
+          "note": "Listed for: SUN., January 10 & 14 , 2-4:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Hand Quilting",
+          "date": "2027-01-24",
+          "time": "3:00 PM to 5:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/hand-quilting-w-allison",
+          "price": "$125",
+          "note": "Listed for: Sun., January 24 & 31, 3-5:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Kids Sewing 101: Pillowcase",
+          "date": "2027-01-17",
+          "time": "9:00 AM to 11:00 AM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/kids-sewing-101-pillowcase-w-merrilee",
+          "price": "$70",
+          "note": "Listed for: SUN., January 17, 9-11am. Open as of the shop's listing."
+        },
+        {
+          "title": "Crochet 101: Spa Towel",
+          "date": "2027-01-12",
+          "time": "6:00 PM to 8:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/crochet-101-spa-towel-with-madison-or-melissa",
+          "price": "$90",
+          "note": "Listed for: TUES., January 12 and 19, 6:00pm-8:00pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Romey Dress in a Weekend",
+          "date": "2027-01-30",
+          "time": "10:00 AM to 2:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/romey-dress-in-a-weekend-w-isabel",
+          "price": "$185",
+          "note": "Listed for: SAT., January 30 & SUN., January 31 10:00am -2:00pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Kids Crochet 102",
+          "date": "2027-01-16",
+          "time": "2:30 PM to 4:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/crochet-for-kids-w-hannah",
+          "price": "$75",
+          "note": "Listed for: SAT., January 16 & January 30, 2:30-4:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Choosing and Using Garment Fabrics",
+          "date": "2027-01-16",
+          "time": "10:00 AM to 12:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/choosing-and-using-garment-fabrics-with-brittany",
+          "price": "$85",
+          "note": "Listed for: Saturday, January 16, 10:00am-12:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Stranded Colorwork 101",
+          "date": "2027-01-20",
+          "time": "5:00 PM to 7:30 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/stranded-colorwork-101-with-isabel",
+          "price": "$105",
+          "note": "Listed for: WED., January 20 & February 3, 5-7:30pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Easy Patchwork Sweatshirt",
+          "date": "2027-01-25",
+          "time": "6:00 PM to 9:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/intro-to-bag-making-foldable-lined-tote-bag-w-mallory-copy",
+          "price": "$65",
+          "note": "Listed for: MON., January 25, 6-9pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Strawberry Amigurumi",
+          "date": "2027-01-22",
+          "time": "6:00 PM to 8:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/strawberry-amigurumi-with-megan",
+          "price": "$85",
+          "note": "Listed for: Fridays, January 22 and January 29, 6-8pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Rue Quilt Coat, Part 1",
+          "date": "2027-01-28",
+          "time": "6:00 PM to 9:00 PM",
+          "venue": "Sew to Speak, Columbus",
+          "category": "quilting",
+          "type": "class",
+          "url": "https://sewtospeakshoppe.com/products/rue-quilt-coat-part-1-w-isabel",
+          "price": "$60",
+          "note": "Listed for: THURS., January 28, 6-9pm. Open as of the shop's listing."
+        },
+        {
+          "title": "Cajun Fettuccine Pasta",
+          "date": "2026-12-03",
+          "time": "6:00 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/73429/cajun-fettuccine-pasta",
+          "price": "$79.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Make Ravioli, Risotto and Tiramisu",
+          "date": "2026-12-03",
+          "time": "6:00 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/74040/make-ravioli-risotto-and-tiramisu",
+          "price": "$99.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Fresh, Flaky, French Croissants",
+          "date": "2026-12-09",
+          "time": "9:00 AM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/43092/irresistible-croissants",
+          "price": "$93.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Homemade Gnocchi With Red Pepper Sauce",
+          "date": "2026-12-17",
+          "time": "6:00 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/73430/homemade-gnocchi-with-red-pepper-sauce",
+          "price": "$79.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Chocolate Making and Pairing",
+          "date": "2026-12-19",
+          "time": "4:30 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/73800/chocolate-making-and-pairing",
+          "price": "$83.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Signature Sushi Creations",
+          "date": "2027-01-06",
+          "time": "4:00 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/35552/signature-sushi-creations",
+          "price": "$93.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        },
+        {
+          "title": "Hands-On Sushi Making",
+          "date": "2027-01-14",
+          "time": "6:00 PM",
+          "venue": "Cozymeal, Columbus",
+          "category": "cooking",
+          "type": "class",
+          "url": "https://www.cozymeal.com/cooking-class/73438/hands-on-sushi-making",
+          "price": "$79.99 per person",
+          "note": "Listed on Cozymeal's Columbus cooking classes page."
+        }
+      ],
+      "recurring": [
+        {
+          "title": "Ohio Statehouse Holiday Festival and Tree Lighting",
+          "category": "festivals",
+          "type": "event",
+          "when": "2026 date not confirmed (2025 was December 4)",
+          "venue": "Ohio Statehouse, Columbus",
+          "url": "https://www.ohiostatehouse.org/calendar/event?id=1760",
+          "note": "Free. Tree lighting in the atrium, then a festival with cookies and activities."
+        },
+        {
+          "title": "Speaking of History talk series",
+          "category": "history",
+          "type": "talk",
+          "when": "Recurring; no December date found",
+          "venue": "Ohio History Center, Columbus",
+          "url": "https://www.ohiohistory.org/events-experiences/speaking-of-history-series",
+          "note": "Ohio History Connection talks. Recent topics include civil rights and architecture."
+        },
+        {
+          "title": "Gateway Film Center",
+          "category": "film",
+          "type": "event",
+          "when": "Check the December calendar",
+          "venue": "Gateway Film Center, Columbus",
+          "url": "https://gatewayfilmcenter.org",
+          "note": "Independent film screenings. The December 2026 schedule was not confirmed in search results."
+        },
+        {
+          "title": "Tech meetups and mixers",
+          "category": "technology",
+          "type": "talk",
+          "when": "Varies; a Columbus tech mixer listing runs through December 25",
+          "venue": "Columbus",
+          "url": "https://happeningnext.com/event/columbus-tech-mixer-and-social-tech-ai-data-it-✨-eid1ef0kw99m2aa",
+          "note": "Tech, AI and data mixer at Brass Eye. The listing may be a date window rather than one event."
+        },
+        {
+          "title": "Columbus developer meetups",
+          "category": "technology",
+          "type": "talk",
+          "when": "Varies",
+          "venue": "Columbus",
+          "url": "https://dev.events/meetups/NA/US/OH/Columbus",
+          "note": "Developer meetup listings for Columbus, including Cocoaheads and NSCoder groups."
+        },
+        {
+          "title": "Metro Parks Winter Hikes series",
+          "category": "parks",
+          "type": "event",
+          "when": "December through February",
+          "venue": "Columbus Metro Parks",
+          "url": "https://www.metroparks.net/winter-hikes/",
+          "note": "Visit seven parks to earn a patch. The 2026 to 27 schedule was not yet posted when checked."
+        },
+        {
+          "title": "Chestnut Ridge lantern walks",
+          "category": "parks",
+          "type": "event",
+          "when": "Likely December 4 and 5, 2026 (inferred from past years, not confirmed)",
+          "venue": "Chestnut Ridge, 8445 Winchester Rd NW, Carroll",
+          "url": "https://www.metroparks.net/winter-hikes/",
+          "note": "Walks ran 5 to 6:30 PM on the first Friday and Saturday of December in past years."
+        },
+        {
+          "title": "Metro Parks holiday lights",
+          "category": "parks",
+          "type": "event",
+          "when": "Most of December (dates not confirmed)",
+          "venue": "Battelle Darby Creek, Blacklick Woods, Highbanks, Homestead, Inniswood",
+          "url": "https://www.metroparks.net/events",
+          "note": "Light trails at five parks. Past seasons ran from dusk to about 8 PM."
+        },
+        {
+          "title": "Authors at the Library",
+          "category": "books",
+          "type": "event",
+          "when": "2026 lineup, see library calendar",
+          "venue": "Columbus Metropolitan Library",
+          "url": "https://www.columbuslibrary.org/authors-at-the-library",
+          "note": "Author talks. No December date was confirmed."
+        },
+        {
+          "title": "Library events calendar",
+          "category": "books",
+          "type": "event",
+          "when": "Ongoing, includes book clubs",
+          "venue": "Columbus Metropolitan Library branches",
+          "url": "https://events.columbuslibrary.org",
+          "note": "Branch book clubs and programs. Check the calendar for December dates."
+        },
+        {
+          "title": "CABS board game club",
+          "category": "boardgames",
+          "type": "event",
+          "when": "Saturdays, doors 10 AM",
+          "venue": "CABS, Columbus",
+          "url": "https://www.meetup.com/columbus-area-boardgaming-society/events/314525025/",
+          "note": "2,000+ games on site. First visit is free. Listed on Meetup as Columbus Area Boardgaming Society, meeting Saturdays and First Fridays. Check the Meetup event for the current venue."
+        },
+        {
+          "title": "All Fem Board Game Night (FANG)",
+          "category": "boardgames",
+          "type": "event",
+          "when": "Check Meetup for dates",
+          "venue": "Columbus",
+          "url": "https://tabletop.events/conventions/fang-con-2026",
+          "note": "All-female board game group playing modern hobby games. The link is their FANG Con 2026 page; regular game nights are on Meetup."
+        },
+        {
+          "title": "Columbus Chess Club",
+          "category": "boardgames",
+          "type": "event",
+          "when": "Sundays",
+          "venue": "Columbus",
+          "url": "https://www.meetup.com/topics/chess",
+          "note": "All ages and skill levels. The link is Meetup's chess topic page; search it for Columbus Chess Club."
+        },
+        {
+          "title": "Crimson Cup coffee classes",
+          "category": "coffee",
+          "type": "class",
+          "when": "Check the schedule",
+          "venue": "Crimson Cup Innovation Lab, 700 Alum Creek Drive",
+          "url": "https://www.crimsoncup.com/coffee-and-tea/learn-about-coffee-roasting-and-hand-pour-brewing-at-the-crimson-cup-innovation-lab",
+          "note": "Espresso and brewing courses. No 2026 or December dates were found. The link is an older course page."
+        },
+        {
+          "title": "Cooking classes",
+          "category": "cooking",
+          "type": "class",
+          "when": "Various dates",
+          "venue": "Cozymeal, Columbus",
+          "url": "https://www.cozymeal.com/cooking-class/61693/seasonal-winter-harvest-dinner",
+          "note": "Several Columbus classes at about $89 for a four-course meal. Most listings show no December date."
+        },
+        {
+          "title": "Quilting series",
+          "category": "quilting",
+          "type": "class",
+          "when": "Check registration",
+          "venue": "Columbus Recreation and Parks",
+          "url": "https://active.com/orgs/columbus-recreation-and-parks-department",
+          "note": "Past sessions ran in 2024 and 2025. A December 2026 session is unconfirmed. The link is the department's Active.com page."
+        },
+        {
+          "title": "Quilting: Life's a Stitch",
+          "category": "quilting",
+          "type": "class",
+          "when": "October 8 to December 31, 2026",
+          "venue": "SourcePoint Enrichment Center, Delaware, Ohio",
+          "url": "https://www.active.com/delaware-oh/board-games/classes/quilting-life-s-a-stitch-2026-110678037",
+          "note": "About 20 miles north of Columbus. Listed for ages 55 and up."
+        },
+        {
+          "title": "Sew to Speak classes and events",
+          "category": "quilting",
+          "type": "class",
+          "when": "Check the Classes and Events page",
+          "venue": "Sew to Speak, Columbus",
+          "url": "https://ma.to/venue/sewtospeak",
+          "note": "Fabric, yarn, and workshops in knitting, crochet, needlepoint and sewing. No December 2026 dates were posted when checked."
+        }
+      ],
+      "articles": [
+        {
+          "title": "Forgotten Coding Queens, Telephones Untangled, and a Poisonous Quest: 8 Books We're Excited to Read This November",
+          "source": "Nautilus",
+          "date": "2026-10-28",
+          "topic": "books",
+          "summary": "A monthly reading list that includes a new biography of Niels Bohr.",
+          "url": "https://nautil.us/forgotten-coding-queens-telephones-untangled-and-a-poisonous-quest-8-books-were-excited-to-read-this-november-1286136/"
+        },
+        {
+          "title": "November 2026 issue, including “The Skywatchers”",
+          "source": "Smithsonian",
+          "date": "2026-11-01",
+          "topic": "arts",
+          "summary": "Features include “The Skywatchers,” on how astronomers and art historians study classic paintings and literature.",
+          "url": "https://www.smithsonianmag.com/issue/smithsonian/november-2026/"
+        },
+        {
+          "title": "Hyperallergic weekly newsletter, Special Edition",
+          "source": "Hyperallergic",
+          "date": "2026-11-14",
+          "topic": "arts",
+          "summary": "Previews Fall 2026 art and architecture books from Yale University Press.",
+          "url": "https://hyperallergic.com/11-14-26-weekly-newsletter-2/"
+        },
+        {
+          "title": "Weekly coffee news: Costa Rica harvest concerns and restoring an iconic coffee sign",
+          "source": "Daily Coffee News",
+          "date": "2026-11-06",
+          "topic": "coffee",
+          "summary": "El Niño and lower harvest estimates in Costa Rica, plus a new report on coffee machines.",
+          "url": "https://dailycoffeenews.com/2026/11/06/weekly-coffee-news-costa-rica-harvest-concerns-restoring-iconic-coffee-sign/"
+        },
+        {
+          "title": "Weekly coffee news: a new coffee education certificate and an ICO price that edged down",
+          "source": "Daily Coffee News",
+          "date": "2026-11-13",
+          "topic": "coffee",
+          "summary": "The weekly roundup includes a new coffee education certificate.",
+          "url": "https://dailycoffeenews.com/2026/11/13/weekly-coffee-news-new-coffee-education-certificate-ico-price-edges-down/"
+        },
+        {
+          "title": "Welcome to the mixed-up, joyful world of AuDHD",
+          "source": "Aeon",
+          "date": "2026-11-05",
+          "topic": "",
+          "summary": "An essay on living with both autism and ADHD.",
+          "url": "https://aeon.co/essays/welcome-to-the-mixed-up-joyful-world-of-audhd"
+        },
+        {
+          "title": "Why astrophysics needs to abandon the ‘Big Questions’",
+          "source": "Aeon",
+          "date": "2026-11-06",
+          "topic": "",
+          "summary": "Physicist Pedro G. Ferreira argues that physics tells us little about the deepest questions about the universe.",
+          "url": "https://aeon.co/essays/why-astrophysics-needs-to-abandon-the-big-questions"
+        },
+        {
+          "title": "A new answer to why there is something rather than nothing",
+          "source": "Aeon",
+          "date": "2026-11-12",
+          "topic": "",
+          "summary": "A new take on an old philosophical question.",
+          "url": "https://aeon.co/essays/a-new-answer-to-why-there-is-something-rather-than-nothing"
+        },
+        {
+          "title": "Those forced to cross borders are imagining a radical new world",
+          "source": "Aeon",
+          "date": "2026-11-13",
+          "topic": "",
+          "summary": "On how people crossing borders imagine the future, and what that says about freedom.",
+          "url": "https://aeon.co/essays/those-forced-to-cross-borders-are-imagining-a-radical-new-world"
+        },
+        {
+          "title": "AI is everywhere",
+          "source": "MIT Technology Review",
+          "date": "2026-11-18",
+          "topic": "technology",
+          "summary": "From MIT Technology Review's AI Hype Index column.",
+          "url": "https://technologyreview.com/2026/11/18/1148650/ai-hype-index-ai-is-everywhere"
+        },
+        {
+          "title": "Columbus weekend picks: a reimagined Pirates of Penzance and a modern Hamlet",
+          "source": "Axios Columbus",
+          "date": "2026-11-06",
+          "topic": "arts",
+          "summary": "Weekend picks for Columbus theater, including a modern retelling of Hamlet at the Columbus Performing Arts Center.",
+          "url": "https://www.axios.com/local/columbus/2026/11/06/weekend-events-things-to-do-maybe-happy-ending-cranksgiving"
+        },
+        {
+          "title": "Middleman",
+          "source": "Kirkus Reviews",
+          "date": "2026-11-10",
+          "topic": "",
+          "summary": "Kirkus's review of Brendan Flaherty's darkly comic novel, which is about more than climate change.",
+          "url": "https://www.kirkusreviews.com/book-reviews/brendan-flaherty/middleman/"
+        },
+        {
+          "title": "This Impossible Life",
+          "source": "Kirkus Reviews",
+          "date": "2026-11-10",
+          "topic": "",
+          "summary": "Kirkus's review of Chinelo Okparanta's novel about a brother and sister orphaned in Lagos.",
+          "url": "https://www.kirkusreviews.com/book-reviews/chinelo-okparanta/this-impossible-life/"
+        },
+        {
+          "title": "Stations",
+          "source": "Kirkus Reviews",
+          "date": "2026-11-03",
+          "topic": "",
+          "summary": "Kirkus's review of Louise Kennedy's novel, described as sad but hopeful.",
+          "url": "https://www.kirkusreviews.com/book-reviews/louise-kennedy/stations/"
+        },
+        {
+          "title": "November's best sci-fi and fantasy books",
+          "source": "Lit Hub",
+          "date": "2026-11",
+          "topic": "",
+          "summary": "A monthly roundup of new sci-fi and fantasy, including a vampiric horror novel due November 10.",
+          "url": "https://lithub.com/vampiric-broodmothers-gig-economy-ghosts-and-medieval-abortionists-novembers-best-sci-fi-and-fantasy-books/"
+        },
+        {
+          "title": "New science fiction and fantasy books to read in November 2026",
+          "source": "Book Riot",
+          "date": "2026-11",
+          "topic": "",
+          "summary": "Book Riot's monthly list of new sci-fi and fantasy titles.",
+          "url": "https://bookriot.com/science-fiction-and-fantasy-books-november-2026/"
+        },
+        {
+          "title": "J.R.R. Tolkien on Fairy Tales, Language, the Psychology of Fantasy, and Why There’s No Such Thing as Writing “For Children”",
+          "source": "The Marginalian",
+          "date": "2026-11-16",
+          "topic": "",
+          "summary": "Tolkien on fairy stories, language and the psychology of fantasy.",
+          "url": "https://www.themarginalian.org/2026/11/16/j-r-r-tolkien-on-fairy-stories/"
+        },
+        {
+          "title": "Embrace Your Obsessions: Susan Orlean on the Antidote to the Meaninglessness of Life",
+          "source": "The Marginalian",
+          "date": "2026-11-14",
+          "topic": "",
+          "summary": "Susan Orlean on obsession, drawn from The Orchid Thief.",
+          "url": "https://www.themarginalian.org/2026/11/14/susan-orlean-orchid-thief/"
+        },
+        {
+          "title": "The Relief of Rock Bottom: George Orwell and the Secret Springboard of Success",
+          "source": "The Marginalian",
+          "date": "2026-11-20",
+          "topic": "",
+          "summary": "On George Orwell's Down and Out in Paris and London.",
+          "url": "https://www.themarginalian.org/2026/11/20/rock-bottom/"
+        },
+        {
+          "title": "How to Touch the Nothingness Behind Everything: Kahlil Gibran on the Seven Selves",
+          "source": "The Marginalian",
+          "date": "2026-11-24",
+          "topic": "",
+          "summary": "Kahlil Gibran on the seven selves, drawn from The Madman.",
+          "url": "https://www.themarginalian.org/2026/11/24/the-seven-selves-kahlil-gibran/"
+        },
+        {
+          "title": "The Illustrated Version of “Alice’s Restaurant”: Watch Arlo Guthrie’s Thanksgiving Counterculture Classic",
+          "source": "Open Culture",
+          "date": "2026-11-26",
+          "topic": "",
+          "summary": "An illustrated version of Arlo Guthrie's Thanksgiving song.",
+          "url": "https://www.openculture.com/2026/11/alices-restaurant-watch-arlo-guthries-thanksgiving-counterculture-classic.html"
+        }
+      ]
+    }
+  ],
 
   sources: [
     { name: "The Marginalian (formerly Brain Pickings)", url: "https://www.themarginalian.org" },
