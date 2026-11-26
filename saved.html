@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Saved · Strange and Unusual</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Libre+Franklin:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=Pirata+One&display=swap" rel="stylesheet">
+<style>
+  :root { --paper:#f7f3ea; --ink:#1b1a17; --muted:#6b665c; --rule:#1b1a17; --accent:#9b2c1f; --card:#fffdf8; --tag-bg:#ece5d4;
+    --serif-head:"Playfair Display",Georgia,serif; --gothic:"Pirata One",Georgia,serif; --sans:"Libre Franklin",Arial,sans-serif; --body:"Source Serif 4",Georgia,serif; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper:#181714; --ink:#ece7dc; --muted:#a39d90; --rule:#ece7dc; --accent:#e0705f; --card:#201e1a; --tag-bg:#2d2a24; } }
+  :root[data-theme="dark"] { --paper:#181714; --ink:#ece7dc; --muted:#a39d90; --rule:#ece7dc; --accent:#e0705f; --card:#201e1a; --tag-bg:#2d2a24; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--paper); color: var(--ink); }
+  body { font-family: var(--body); font-size: 17px; line-height: 1.5; padding: max(16px, env(safe-area-inset-left, 0px)); }
+  a { color: var(--ink); }
+  .wrap { max-width: 900px; margin: 0 auto; }
+  .back { font-family: var(--sans); font-size: 14px; text-transform: uppercase; letter-spacing: .06em; border: 1px solid var(--rule); padding: 4px 12px; text-decoration: none; display: inline-block; margin-top: 8px; }
+  .back:hover, .back:focus-visible { background: var(--ink); color: var(--paper); }
+  header { text-align: center; padding: 18px 0 12px; border-bottom: 4px double var(--rule); }
+  h1 { font-family: var(--gothic); font-weight: 400; font-size: clamp(39px, 8vw, 74px); line-height: 1.05; margin: 0; }
+  .dek { font-style: italic; color: var(--muted); margin: 10px 0 0; }
+  .list { display: grid; grid-template-columns: 1fr; gap: 14px; padding: 18px 0 36px; }
+  @media (min-width: 700px) { .list { grid-template-columns: 1fr 1fr; } }
+  .card { position: relative; background: var(--card); border: 1px solid var(--rule); padding: 14px 16px 14px; }
+  .kind { font-family: var(--sans); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); padding-right: 90px; }
+  .card h3 { font-family: var(--serif-head); font-size: 19px; line-height: 1.25; margin: 4px 0; }
+  .when { font-family: var(--sans); font-size: 13px; color: var(--muted); }
+  .note { font-size: 15px; margin: 6px 0 0; }
+  .save-box { position: absolute; top: 12px; right: 12px; display: inline-flex; align-items: center; gap: 4px; font-family: var(--sans); font-size: 12px; color: var(--muted); cursor: pointer; background: var(--card); padding: 2px 4px; }
+  .save-box input { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; cursor: pointer; }
+  .empty { border: 1px dashed var(--rule); padding: 18px; background: var(--card); grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Saved</h1>
+    <p class="dek">Items you save stay here until you uncheck them. They are kept in this browser.</p>
+    <a class="back" href="index.html">← Back to the newspaper</a>
+  </header>
+  <div class="list" id="savedList"></div>
+</div>
+<script src="saved.js"></script>
+<script>
+(function () {
+  var esc = function (s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  };
+  var KINDS = { book: "Book", streaming: "Streaming", event: "Event", group: "Ongoing group", article: "Article" };
+  var list = document.getElementById("savedList");
+
+  function emptyMsg() {
+    return '<div class="empty"><p>Nothing saved yet. On the newspaper, tick "Save" on any book, streaming title, event or article.</p></div>';
+  }
+  function card(key, it) {
+    return '<article class="card" data-key="' + esc(key) + '">' +
+      '<label class="save-box"><input type="checkbox" data-save="' + esc(key) + '" checked><span>Saved</span></label>' +
+      '<div class="kind">' + esc(KINDS[it.kind] || it.kind) + '</div>' +
+      '<h3>' + (it.url ? '<a href="' + esc(it.url) + '" target="_blank" rel="noopener">' + esc(it.title) + '</a>' : esc(it.title)) + '</h3>' +
+      (it.when ? '<div class="when">' + esc(it.when) + '</div>' : '') +
+      (it.note ? '<p class="note">' + esc(it.note) + '</p>' : '') +
+      '</article>';
+  }
+  function render() {
+    var items = Saved.all();
+    var keys = Object.keys(items).reverse();
+    list.innerHTML = keys.length ? keys.map(function (k) { return card(k, items[k]); }).join("") : emptyMsg();
+  }
+  list.addEventListener("change", function (e) {
+    var t = e.target;
+    if (!t || !t.matches || !t.matches('input[data-save]')) return;
+    var key = t.getAttribute("data-save");
+    Saved.set(key, null, false);
+    var el = list.querySelector('article[data-key="' + key.replace(/"/g, '\\"') + '"]');
+    if (el) el.remove();
+    if (!list.querySelector("article")) list.innerHTML = emptyMsg();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -148,6 +148,12 @@
   details.dcard > summary .dtitle { display: block; font-family: var(--serif-head); font-size: 19px; margin: 4px 0; font-weight: 700; }
   details.dcard > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
   details.dcard .dbody { margin-top: 8px; }
+  details.dcard > summary { padding-right: 96px; }
+  details.dcard > summary > .save-box { position: absolute; right: 30px; top: 8px; }
+  .savable { position: relative; }
+  .save-box { display: inline-flex; align-items: center; gap: 4px; font-family: var(--sans); font-size: 12px; color: var(--muted); cursor: pointer; background: var(--card); padding: 2px 4px; }
+  .save-box input { width: 20px; height: 20px; accent-color: var(--accent); margin: 0; cursor: pointer; }
+  .savable > .save-box { position: absolute; top: 12px; right: 12px; }
   .empty p { margin: 0 0 8px; }
 
   footer { font-family: var(--sans); font-size: 13px; color: var(--muted); padding: 20px 0 36px; }
@@ -176,6 +182,7 @@
     <a class="nav-btn" href="#events">Local events</a>
     <a class="nav-btn" href="#articles">Around the web</a>
     <a class="nav-btn" href="#sources">Sources</a>
+    <a class="nav-btn" href="saved.html">Saved</a>
     <button class="nav-btn" id="themeToggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
   </nav>
   </div>
@@ -237,6 +244,7 @@
 </div>
 
 <script src="data.js"></script>
+<script src="saved.js"></script>
 <script>
 (function () {
   var D = window.NEWSPAPER || {};
@@ -256,6 +264,20 @@
     return d.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" });
   }
   function byDate(a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; }
+
+  // Save checkboxes: each item is registered so the Saved page keeps a copy of it.
+  var SAVE_REG = {};
+  function saveBox(kind, item) {
+    var key = Saved.keyOf(kind, item.title, item.url);
+    SAVE_REG[key] = { kind: kind, title: item.title || "", url: item.url || "", when: item.when || "", note: item.note || "" };
+    return '<label class="save-box"><input type="checkbox" data-save="' + esc(key) + '"' + (Saved.isSaved(key) ? ' checked' : '') + '><span>Save</span></label>';
+  }
+  document.addEventListener("change", function (e) {
+    var t = e.target;
+    if (!t || !t.matches || !t.matches('input[data-save]')) return;
+    var key = t.getAttribute("data-save");
+    Saved.set(key, SAVE_REG[key], t.checked);
+  });
 
   // Masthead
   var now = new Date();
@@ -327,7 +349,7 @@
     var titleHtml = b.url
       ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.title) + '</a>'
       : esc(b.title);
-    return '<article class="book">' +
+    return '<article class="book savable">' + saveBox('book', { title: b.title, url: b.url, when: fmtDate(b.date), note: b.summary }) +
       '<div class="when">' + (b.trending ? 'Trending now' : esc(fmtDate(b.date))) + '</div>' +
       '<h4 class="title">' + titleHtml + '</h4>' +
       (b.author ? '<p class="by">by ' + esc(b.author) + '</p>' : '') +
@@ -366,9 +388,9 @@
   }
 
   // Collapsible card: the title and date show; tap to open the details.
-  function dcard(whenHtml, titleText, bodyHtml) {
+  function dcard(whenHtml, titleText, bodyHtml, kind, item) {
     return '<details class="event dcard"><summary><span class="when">' + whenHtml + '</span>' +
-      '<span class="dtitle">' + esc(titleText) + '</span></summary><div class="dbody">' + bodyHtml + '</div></details>';
+      '<span class="dtitle">' + esc(titleText) + '</span>' + saveBox(kind, item) + '</summary><div class="dbody">' + bodyHtml + '</div></details>';
   }
 
   // On screen
@@ -379,7 +401,7 @@
         (s.summary ? '<p class="note" style="margin:6px 0 0">' + esc(s.summary) + '</p>' : '') +
         '<div class="meta" style="margin-top:8px">Streaming on: ' + esc((s.streaming || []).join(", ")) + (s.guide ? ' · Link is to a third-party guide' : '') + '</div>' +
         '<p style="margin:8px 0 0"><a href="' + esc(s.url) + '" target="_blank" rel="noopener">Open the link →</a></p>';
-      return dcard(esc(fmtDate(s.date)) + ' · ' + esc(s.type || ""), s.title, body);
+      return dcard(esc(fmtDate(s.date)) + ' · ' + esc(s.type || ""), s.title, body, 'streaming', { title: s.title, url: s.url, when: fmtDate(s.date), note: s.summary });
     }).join("") : '<div class="empty"><p>Nothing listed for this week.</p></div>';
   }
 
@@ -387,7 +409,7 @@
   function renderArticles() {
     var items = (editions[selected].articles || []).slice().sort(function (a, b) { return a.date < b.date ? 1 : -1; });
     document.getElementById("articleList").innerHTML = items.length ? items.map(function (a) {
-      return '<article class="event">' +
+      return '<article class="event savable">' + saveBox('article', { title: a.title, url: a.url, when: a.source + ' · ' + fmtDate(a.date), note: a.summary }) +
         '<div class="when">' + esc(a.source) + ' · ' + esc(fmtDate(a.date)) + '</div>' +
         '<h3><a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.title) + '</a></h3>' +
         (a.summary ? '<p class="note" style="margin:6px 0 0">' + esc(a.summary) + '</p>' : '') +
@@ -454,7 +476,7 @@
         (ev.note ? '<p class="note" style="margin:6px 0 0">' + esc(ev.note) + '</p>' : '') +
         tags(ev) +
         (ev.url ? '<p style="margin:8px 0 0"><a href="' + esc(ev.url) + '" target="_blank" rel="noopener">Open the link →</a></p>' : '');
-      return dcard(esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : ''), ev.title, body);
+      return dcard(esc(fmtDate(ev.date)) + (ev.time ? ' · ' + esc(ev.time) : ''), ev.title, body, 'event', { title: ev.title, url: ev.url, when: fmtDate(ev.date) + (ev.time ? ' · ' + ev.time : ''), note: ev.note });
     }).join("") + '</div>' : '<p class="note">No dated listings in this category.</p>';
 
     html += '<h3 class="subhead">Ongoing groups and classes</h3>';
@@ -463,7 +485,7 @@
         (r.note ? '<p class="note" style="margin:6px 0 0">' + esc(r.note) + '</p>' : '') +
         tags(r) +
         (r.url ? '<p style="margin:8px 0 0"><a href="' + esc(r.url) + '" target="_blank" rel="noopener">Open the link →</a></p>' : '');
-      return dcard(esc(r.when || ""), r.title, body);
+      return dcard(esc(r.when || ""), r.title, body, 'group', { title: r.title, url: r.url, when: r.when, note: r.note });
     }).join("") + '</div>' : '<p class="note">Nothing in this category.</p>';
 
     el.innerHTML = html;
