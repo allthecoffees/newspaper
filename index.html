@@ -58,6 +58,7 @@
     display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; padding: 8px 0; color: var(--muted);
     border-bottom: 1px solid var(--rule); }
   html { overflow-anchor: none; }
+  section { scroll-margin-top: calc(var(--head-c, 180px) + 10px); }
   .sticky-head { position: fixed; top: 0; left: 0; right: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); padding: 0 16px; }
   #headSpacer { display: block; }
   body.scrolled .sticky-head .tagline { max-height: 0; margin: 0; opacity: 0; }
@@ -528,7 +529,9 @@
     var was = document.body.classList.contains("scrolled");
     document.body.classList.remove("scrolled");
     spacerEl.style.height = headEl.offsetHeight + "px";
-    if (was) document.body.classList.add("scrolled");
+    document.body.classList.add("scrolled");
+    document.documentElement.style.setProperty("--head-c", headEl.offsetHeight + "px");
+    if (!was) document.body.classList.remove("scrolled");
   }
   var scrolled = false;
   window.addEventListener("scroll", function () {
