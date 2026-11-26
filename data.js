@@ -140,6 +140,18 @@ window.NEWSPAPER = {
       url: "https://www.sortiraparis.com/en/what-to-do-in-paris/cinema-series/guides/321902-hbo-max-december-2026-releases" }
   ],
 
+  // Weather band (seven days, Columbus, Ohio). Refreshed weekly from AccuWeather (location key 350128).
+  weatherUpdated: "2026-11-26",
+  weather: [
+    ["Thu", "26", "\ud83c\udf27\ufe0f", 45, 39, 100, "Rain"],
+    ["Fri", "27", "\ud83c\udf27\ufe0f", 43, 33, 55, "Cloudy, a little rain"],
+    ["Sat", "28", "\u26c5", 48, 37, 5, "Clouds yielding to sun"],
+    ["Sun", "29", "\ud83c\udf27\ufe0f", 51, 39, 90, "Rain and drizzle in the afternoon"],
+    ["Mon", "30", "\ud83c\udf24\ufe0f", 44, 28, 5, "Some clouds, then sunshine"],
+    ["Tue", "1", "\u2601\ufe0f", 46, 34, 14, "Mostly cloudy"],
+    ["Wed", "2", "\ud83c\udf24\ufe0f", 53, 42, 14, "Partial sunshine"]
+  ],
+
   // Dated events, festivals and talks.
   events: [
     { title: "Christkindlmarkt Dublin", date: "2026-11-21", time: "",

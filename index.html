@@ -450,16 +450,8 @@
   }
   renderAll();
 
-  // Weather band: seven days, Columbus OH (forecast saved Nov 26, 2026; update by hand)
-  var WX = [
-    ["Thu", "26", "🌧️", 45, 39, 100, "Rain"],
-    ["Fri", "27", "🌦️", 43, 33, 55, "Showers"],
-    ["Sat", "28", "⛅", 48, 37, 5, "Clouds, then sun"],
-    ["Sun", "29", "🌧️", 51, 39, 90, "Rain"],
-    ["Mon", "30", "🌤️", 44, 28, 5, "Partly sunny"],
-    ["Tue", "1", "☁️", 46, 34, 14, "Mostly cloudy"],
-    ["Wed", "2", "🌤️", 53, 42, 14, "Partly sunny"]
-  ];
+  // Weather band: seven days, Columbus OH (refreshed weekly into data.js)
+  var WX = D.weather || [];
   document.getElementById("weather").innerHTML = WX.map(function (w, i) {
     return '<div class="wx-day' + (i === 0 ? ' today' : '') + '" title="' + esc(w[6]) + '">' +
       '<span class="wx-d">' + esc(w[0]) + ' ' + esc(w[1]) + '</span>' +
