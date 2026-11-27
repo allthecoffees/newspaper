@@ -257,6 +257,11 @@
 <script src="saved.js"></script>
 <script>
 (function () {
+  // Start at the top on every launch. A home-screen app can reopen the last address,
+  // including a section link like #sources, so clear that and reset the scroll position.
+  if ("scrollRestoration" in history) { history.scrollRestoration = "manual"; }
+  if (location.hash) { history.replaceState(null, "", location.pathname + location.search); }
+  window.scrollTo(0, 0);
   var D = window.NEWSPAPER || {};
   var esc = function (s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
